@@ -1,19 +1,31 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges: start -->
 
-[![Generic
-badge](https://img.shields.io/badge/%3CBIOINFORMATICS%20COURSE%3E-%3CUnder%20Construction%3E-%3CGREEN%3E.svg)](https://shields.io/)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "imgs/",
+  out.width = "100%"
+)
+
+
+```
+
+<!-- badges: start -->
+[![Generic badge](https://img.shields.io/badge/<BIOINFORMATICS COURSE>-<Under Construction>-<GREEN>.svg)](https://shields.io/)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-[![Bash
-Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![Bash Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 <!-- badges: end -->
 
 # Curso Genômica e Metagnômica: Linhas de comando e ferramentas On-line <img src="imgs/gemm-hex.png" align="right" width = "120px"/>
 
 ### Contéudo programático
 
-**1. Sequenciamento de DNA e RNA**
+**1. Sequenciamento de DNA e RNA** 
 
 1.1. Histórico
 
@@ -55,8 +67,7 @@ Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/e
 
 3.8. Aplicações
 
-**4. Estratégias de Análises Genómicas – Graphical User Interface
-(GUI)**
+**4. Estratégias de Análises Genómicas – Graphical User Interface (GUI)**
 
 4.1. KBase
 
@@ -80,8 +91,7 @@ Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/e
 
 4.2.3. Anotação Funcional (PGAP)
 
-**5. Estratégias de Análises Metagenómicas – Command Line Interface
-(CLI)**
+**5. Estratégias de Análises Metagenómicas – Command Line Interface (CLI)**
 
 5.1. Avaliação da qualidade
 
@@ -109,19 +119,19 @@ Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/e
 
 5.10.3. Abundância relativa dos MAGs nas amostras
 
-**6. Estratégias de Análises Metagenómicas – Graphical User Interface
-(GUI)**
+**6. Estratégias de Análises Metagenómicas – Graphical User Interface (GUI)**
 
 6.1. MGRAST
 
 6.2. Kbase
 
+
 ## Pré-requisitos
 
-- Para as análisis usando linha de comando (CLI) é necessário contar com
-  accesso a um terminal baseado em Unix. Por exemplo alguma distribuição
-  de Linux, MacOS, ou no Windows via WSL (*Windows Subsystem for Linux*)
+* Para as análisis usando linha de comando (CLI) é necessário contar com accesso a um terminal baseado em Unix. Por exemplo alguma distribuição de Linux, MacOS, ou no Windows via WSL (*Windows Subsystem for Linux*)
 
-- Conexão a internet
+* Conexão a internet
+
 
 ### [SLIDES]()
+
