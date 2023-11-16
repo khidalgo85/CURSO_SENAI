@@ -45,11 +45,7 @@ knitr::opts_chunk$set(
 
 |   2.1. Sistema Operacional - GNU/LINUX
 
-|       2.1.1. Instalação de ferramentas con Anaconda/Miniconda
-
-|   2.2. R Software
-
-|   2.3. Python
+|   2.2.  Instalação de ferramentas con Anaconda/Miniconda
 
 **3. Estratégias de Análises Genómicas – Command Line Interface (CLI)**
 
@@ -121,12 +117,21 @@ knitr::opts_chunk$set(
 
 |       5.10.3. Abundância relativa dos MAGs nas amostras
 
+|   5.11. Análises Downstream
+
+|       5.11.1. R Software
+
+|       5.11.2. RawGraphs.io
+
 **6. Estratégias de Análises Metagenómicas – Graphical User Interface (GUI)**
 
 |   6.1. MGRAST
 
 |   6.2. Kbase
 
+**7. Bonus: Python**
+
+|   7.1. Conceitos básicos
 
 ## Pré-requisitos
 
