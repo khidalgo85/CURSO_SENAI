@@ -129,7 +129,7 @@ green <- "#007965"
 blue <- "#0000CD"
 ```
 
-
+---
 ## Um pouco sobre mim
 
 * Nome: Kelly Hidalgo Martinez
