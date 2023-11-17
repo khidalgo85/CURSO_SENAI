@@ -783,7 +783,7 @@ knitr::include_graphics("03.Images/seq1.png")
 * Os quatro nucleotídeos são adicionados ao mesmo tempo
 * São modificados, tem um fluoróforo diferente cada um e um bloqueador removível no extremo 3'
 
-```{r, echo=FALSE, fig.align = 'center', out.width = "40%"}
+```{r, echo=FALSE, fig.align = 'center', out.width = "30%"}
 knitr::include_graphics("03.Images/SEQ2.png")
 ```
 
