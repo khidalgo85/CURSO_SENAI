@@ -677,7 +677,7 @@ knitr::include_graphics("03.Images/pairedend.png")
 
 ### Preparação das bibliotecas (*paired-end*)
 
-* Fragmentação aleatória do DNA (150 à 300 bp)
+* Fragmentação aleatória do DNA (150 a 300 bp)
   * Métodos físicos de fragmentação (ex. sonicação e nebulização)
   * Métodos químicos (ex. enzimas de restrição)
   **Este processo tem que ser o mais aleatório possível**
@@ -784,7 +784,7 @@ knitr::include_graphics("03.Images/seq1.png")
 * São modificados, tem um fluoróforo diferente cada um e um bloqueador removível no extremo 3'
 
 ```{r, echo=FALSE, fig.align = 'center', out.width = "40%"}
-knitr::include_graphics("03.Images/seq2.png")
+knitr::include_graphics("03.Images/SEQ2.png")
 ```
 
 ---

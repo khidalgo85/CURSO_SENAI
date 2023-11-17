@@ -132,4 +132,4 @@ Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/e
 
 - Conexão a internet
 
-### [SLIDES]()
+### [SLIDES](https://khidalgo85.github.io/CURSO_SENAI/#1)

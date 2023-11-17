@@ -140,5 +140,5 @@ knitr::opts_chunk$set(
 * Conexão a internet
 
 
-### [SLIDES]()
+### [SLIDES](https://khidalgo85.github.io/CURSO_SENAI/#1)
 
