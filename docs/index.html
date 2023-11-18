@@ -19,7 +19,7 @@
     <script src="index_files/xaringanExtra-progressBar/progress-bar.js"></script>
     <link href="index_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="index_files/tile-view/tile-view.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xe1547b19bed42acb0d40f38bbb1858c","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xfc66b9e08294c31a89006ba4533acae","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -710,7 +710,7 @@ class: center, middle, inverse
 * Os quatro nucleotídeos (*FI-NTPs*) são adicionados ao mesmo tempo
 * São modificados, tem um fluoróforo diferente cada um e um bloqueador removível no extremo 3'
 
-&lt;img src="03.Images/seq1.png" width="30%" style="display: block; margin: auto;" /&gt;
+&lt;img src="03.Images/seq1.png" width="3C 0%" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Nova ou segunda geração: Illumina
@@ -1023,7 +1023,7 @@ $ pwd
 
 .panel[.panel-name[Nota]
 
-**Nota:** O caminho ao diretório atual pode aparecer diferente segundo o sistema operativo. Por exemplo em Linux pode ser `/home/macbook`, e em Windows, pode ser similar a `C:\Docuements and Settigs\macbook` ou `C:\Users\macbook`. Isso pode variar inclusive entre versões de Windows. Nos próximo exemplos, usaremos o output de Mac como padrão. No Linux e Windows pode ser um pouquinho diferente.
+**Nota:** O caminho ao diretório atual pode aparecer diferente segundo o sistema operativo. Por exemplo em Linux pode ser `/home/macbook`, e em Windows, pode ser similar a `C:\Documents and Settigs\macbook` ou `C:\Users\macbook`. Isso pode variar inclusive entre versões de Windows. Nos próximo exemplos, usaremos o output de Mac como padrão. No Linux e Windows pode ser um pouquinho diferente.
 ]
 
 .panel[.panel-name[Graficamente]
@@ -1031,7 +1031,7 @@ $ pwd
 &lt;img src="03.Images/diretorios.png" width="60%" style="display: block; margin: auto;" /&gt;
 O sistema de arquivos do meu laptop, é algo assim. O diretório mais para cima, é o chamado **root**, o qual tem todos os arquivos e pastas do meu laptop. Se simboliza com a barra `/`. Essa barra é a mesma que está no `/Users/macbook`. Dentro do diretório *root*, tem outros diretórios, como são: `Applications`, `bin`, `etc`, `home`, `Users`, etc. 
 
-Então, agora a gente sabe que o meu diretório atual de trabalh é `/Users/macbook` que está armazenado dentro `/Users`, porque `/Users` é a primeira parte do caminho. E assim, também percebemos que `/Users` está armazenado dentro do diretório *root* `/`, porque o caminho começa com `/`.
+Então, agora a gente sabe que o meu diretório atual de trabalho é `/Users/macbook` que está armazenado dentro `/Users`, porque `/Users` é a primeira parte do caminho. E assim, também percebemos que `/Users` está armazenado dentro do diretório *root* `/`, porque o caminho começa com `/`.
 ]
 
 .panel[.panel-name[Nota 2]
@@ -1073,11 +1073,7 @@ $ ls
 
 .code-bg-gray[
 ```
-Applications		        Google Drive		Public
-CytoscapeConfiguration	Library			    Source
-Desktop			            Movies			    miniconda3
-Documents		            Music
-Downloads		            Pictures
+anaconda3 snap
 ```
 ]
 ]
@@ -1097,11 +1093,7 @@ $ ls -F
 
 .code-bg-gray[
 ```
-Applications/		          Google Drive/		Public/
-CytoscapeConfiguration/	  Library/			  Source/
-Desktop/			            Movies/			    miniconda3/
-Documents/		            Music/
-Downloads/		            Pictures/
+anaconda3/ snap/
 ```
 ]
 ]
@@ -1137,11 +1129,11 @@ $ ls --help
 
 `ls` não é somente para usar no diretório atual, também podem ser explorados outros diretórios. 
 
-Dê uma olhada na pasta **Escritório**, digitando `ls -F Escritorio`. Nesse exemplo o comando é `ls`, a opção é `-F` e o argumento é `Escritorio`.
+Dê uma olhada na pasta **anaconda3**, digitando `ls -F anaconda3`. Nesse exemplo o comando é `ls`, a opção é `-F` e o argumento é `anaconda3`.
 
-O argumento `Escritorio` diz para `ls` que queremos listar o conteúdo de um diretório diferente ao atual, no caso o diretório `Escritorio`
+O argumento `anaconda3` diz para `ls` que queremos listar o conteúdo de um diretório diferente ao atual, no caso o diretório `anaconda3`
 
-Se o diretório `Escritorio` não existe no seu diretório atual, será retornado um erro. Normalmente, o diretório `Escritorio` existe dentro de seu diretório `home`. 
+Se o diretório `anaconda3` não existe no seu diretório atual, será retornado um erro. Normalmente, o diretório `anaconda3` existe dentro de seu diretório `home`. 
 
 ]
 ]
@@ -1175,7 +1167,7 @@ Antes de criar o nosso primeiro diretório, primeiro revisemos as boas práticas
 1. **Não** crie nomes com espaços. `curso_senai` é melhor que `curso senai`
 2. **Não** é permitido o uso de caracteres especiais, como: $%&amp;*()+=¨;'?#@¡!
 3. **Não** comece com `-`, os comandos tratam os nomes que como começam com `-` como as opções
-4. Coloque nomes que sejam indicativos do que o arquivo ou diretório contem. `curso_genomica_senai` é melhor que `curso`
+4. Coloque nomes que sejam indicativos do que o arquivo ou diretório contem. `curso_senai` é melhor que `curso`
 5. **Recomendação:** para trabalhos de passos sequenciais, facilita nomear os diretórios com números que indiquem a etapa do trabalho. `00.DadosBrutos` melhor que `DadosBrutos`, `01.Qualidade` melhor que `Qualidade`
 ]
 
@@ -1204,9 +1196,9 @@ Mas antes...
 
 Para conseguir criar o diretório dentro de `curso_senai`, primeiro temos que aprender o conceito de **caminho**
 
-O **caminho** de um diretório ou arquivo nada mais é que a localização completa desse elemento. Por exemplo `/Users/macbook/curso_senai`: A pasta `curso_senai`, está dentro de `macbook` que a sua vez está dentro de `Users` que está dentro da pasta raiz `/`. 
+O **caminho** de um diretório ou arquivo nada mais é que a localização completa desse elemento. Por exemplo `/root/curso_senai`: A pasta `curso_senai`, está dentro de `root` que a sua vez está dentro da pasta raiz `/`. 
 
-Existem **caminhos absolutos** e **caminhos relativos**. O exemplo anterior é um caminho absoluto. O caracter `~` é interpretado por *shell* como o diretório *home* do usuario, ou seja `~/curso_senai` é o mesmo que `/Users/macbook/curso_senai`, porque o diretório *home* no meu caso é `/Users/macbook/`. 
+Existem **caminhos absolutos** e **caminhos relativos**. O exemplo anterior é um caminho absoluto. O caracter `~` é interpretado por *shell* como o diretório *home* do usuario, ou seja `~/curso_senai` é o mesmo que `/root/curso_senai`, porque o diretório *home* no nosso caso é `/root/`. 
 
 ]
 
@@ -1220,7 +1212,7 @@ Entendido o conceito de caminho...
 
 .code-bg-gray[.can-edit[
 ```
-$ mkdir ???
+$ mkdir 
 ```
 ]
 ]
@@ -1304,11 +1296,11 @@ class: inverse
 
 ## Quiz
 
-Estando no diretório `/Users/macbook/curso_senai`, quais dos seguintes comando poderiamos usar para navegar e chegar no diretório home, que é `/Users/macbook`? 
+Estando no diretório `/root/curso_senai`, quais dos seguintes comando poderiamos usar para navegar e chegar no diretório home, que é `/root`? 
 
 1. `cd .`
 2. `cd /`
-3. `cd /home/macbook`
+3. `cd /root`
 4. `cd ../..`
 5. `cd ~`
 6. `cd home`
@@ -1504,7 +1496,7 @@ $ cp diretorio_de_origem/arquivo.txt diretorio_de_destino/
 ]
 ]
 
-.panel[panel-name[Prática]
+.panel[.panel-name[Prática]
 
 .blue[**Agora é sua vez...**]
 
@@ -1628,7 +1620,7 @@ Podem ser usados vários ao mesmo tempo. Por exemplo `????anol.txt`, o que indic
 
 ]
 
-.panel[panel-name[Prática]
+.panel[.panel-name[Prática]
 
 Ok, mas na prática para que servem os caracteres curingas?
 
