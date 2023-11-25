@@ -15,6 +15,7 @@ output:
       navigation:
         scroll: false
 ---
+
 <div style = "position:fixed; visibility: hidden">
 $$\require{color}\definecolor{yellow}{rgb}{1, 0.8, 0.16078431372549}$$
 $$\require{color}\definecolor{orange}{rgb}{0.96078431372549, 0.525490196078431,
@@ -117,67 +118,121 @@ knitr::include_graphics("03.Images/ORCID.png")
 ---
 ## Conteúdo Programático
 **1. Sequenciamento de ácidos nucleicos**
+
 |   1.1. Histórico
+
 |   1.2. Sanger
+
 |   1.3. Next Generation Sequence
+
 |   1.4. Sequenciamento por síntese
+
 |   1.5. Detecção de íons de hidrogênio
+
 |   1.6. Sequenciamento por nanoporos
+
 |   1.7. Estratégia de Sequenciamento foco: Genômica e Metagenômica
 ---
 ## Conteúdo Programático
+
 **2. Noções de linguagem de programação**
+
 |   2.1. Sistema Operacional - GNU/LINUX
+
 |       2.1.1. Linha de comando (Comandos básicos)
+
 |       2.1.2. Instalação de ferramentas con Anaconda/Miniconda
 ---
 ## Conteúdo Programático
+
 **3. Estratégias de Análises Genómicas – Command Line Interface (CLI)**
+
 |   3.1. Controle de Qualidade
+
 |   3.2. Montagem de novo
+
 |   3.3. Avaliação da Montagem
+
 |   3.4. Anotação Taxonômica
+
 |   3.5. Anotação Funcional
+
 |   3.6. Predição de ORFs
+
 |   3.7. Atribuição Funcional das ORFs
+
 |   3.8. Aplicações
 ---
 ## Conteúdo Programático
+
 **4. Estratégias de Análises Genómicas – Graphical User Interface (GUI)**
+
 |   4.1. KBase
+
 |       4.1.2. Controle de qualidade
+
 |       4.1.3. Trimagem e Filtragem de sequências
+
 |       4.1.4. Motagem de novo
+
 |       4.1.5. Avaliação de montagem
+
 |       4.1.6. Anotação taxonômica
+
 |       4.1.7. Anotação funcional
+
 |   4.2. Introdução a RAPT
+
 |       4.2.1. Montagem de novo com Skesa
+
 |       4.2.2. Anotação Taxonômica (ANI)
+
 |       4.2.3. Anotação Funcional (PGAP)
 ---
 ## Conteúdo Programático
+
 **5. Estratégias de Análises Metagenómicas – Command Line Interface (CLI)**
+
 |   5.1. Avaliação da qualidade
+
 |   5.2. Cobertura dos Metagenoma
+
 |   5.3. Análise de Distâncias MinHash (abordagem de co-assembly)
+
 |   5.4. Montagem dos Metagenomas
+
 |   5.5. Controle de Qualidade das montagens
+
 |   5.6. Predição das ORFs (Open Reading Frame)
+
 |   5.7. Anotação Funcional
+
 |   5.8. Anotação Taxonômica
+
 |   5.9. Mapeamento
 ---
 ## Conteúdo Programático
+
 |   5.10. Recuperação de MAGs (Metagenome Assembled Genomes)
+
 |   5.11. Análises Downstream
+
 |       5.11.1. R Software
+
 |       5.11.2. RawGraphs.io
+
+---
+
 **6. Estratégias de Análises Metagenómicas – Graphical User Interface (GUI)**
+
 |   6.1. MGRAST
+
 |   6.2. Kbase
+
 **7. Bonus: Python**
+
 |   7.1. Conceitos básicos
+
 ---
 class: center, middle, inverse
 .huge[ # Antes de começar lembremos juntos conceitos básicos ]
@@ -186,12 +241,14 @@ class: center, middle, inverse
 * É a molécula que carrega toda a informação genética dos organismos.
 * Tem uma estrutura química simples
 .center[ ![dna](https://media.giphy.com/media/YRzQnWzbn4WIxd3ZYx/giphy.gif) ]
+
 ---
 ## Estrutura do DNA
 ```{r, echo=FALSE, fig.align = 'center', out.width = "70%"}
 knitr::include_graphics("03.Images/DNA.png")
 ```
 * A molécula de DNA está composta por nucleotídeos
+
 ---
 ## Estrutura do DNA
 * Os nucleotídeos também são conhecidos como dNTPs - desoxinucleotídeo.
@@ -235,13 +292,16 @@ knitr::include_graphics("03.Images/duplafita.png")
 .center[ ![dna](https://media.giphy.com/media/mRI1hW0ZBVUly/giphy.gif) ]
 * O DNA se duplica, sempre em sentido 5' --> 3'
 * O DNA é transcrito em RNA mensageiro e estes traduzidos em proteínas
+
 ---
 class: center, middle, inverse
 .huge[ # Agora sim entrando no nosso curso... ]
 ---
+
 class: inverse, center, middle
 .huge[ # 1. Sequenciamento de DNA e RNA ]
 ---
+
 ## O que é sequenciamento?
 É a utilização de métodos bioquímicos para determinar a ordem dos nucleotideos
 em uma molécula de DNA ou RNA. Assim, será possível conhecer a sequência em que
@@ -298,6 +358,7 @@ knitr::include_graphics("03.Images/cpg.png")
 .tiny[
 * Fonte: National Human Genome Research Institute
 ]
+
 ---
 ## Outros dados interessantes...
 ```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
@@ -318,6 +379,7 @@ knitr::include_graphics("03.Images/sanger2.jpg")
 * Fragmentos de ~800 bp (F/R até ~1500 bp)
 * Primeira máquina da Applied Biosystems (1986)
 * Usada por Craig Venter para acelarar o Projeto Genoma Humano
+
 ---
 ## Primeira Geração: Técnica Sanger
 * A reação de sequenciamento é muito similar a uma PCR
@@ -603,6 +665,7 @@ knitr::include_graphics("03.Images/plataformasIllumina.png")
 * Precio do equipamento desde $1.000 USD
 * Taxa de erro mais alta que Illumina (~10%)
 * O fragmento de DNA passa por um nanoporo proteico
+
 ---
 ## Terceira geração: Oxford Nanopore
 * A corrente iônica sofre variações causadas pela ligação de vários nucleotídeos no mesmo poro
@@ -653,11 +716,13 @@ knitr::include_graphics("03.Images/comparison.png")
 * Sequenciamento do **DNA total** de uma amostra (ex. solo, agua, alimentos, biorreator)
 * Não precisa métodos de cultivo
 * Bioinformática mais complexa
+
 ---
 ## Até aqui aprendimos:
 * Lembramos conceitos básicos de biologia molecular, especialmente relacionados com a estrutura do DNA.
 * Uma viagem pela história do sequenciamento até nossos dias
 * Revisão das principais tecnologias de sequenciamento, os principios, métodos, vavntagens e disvantagens
+
 ---
 class: center, middle, inverse
 .huge[ # 2. Noções de linguagem de programação: Linux ]
@@ -666,10 +731,12 @@ class: center, middle, inverse
 * Linux como ferramenta de trabalho
 * Lógica de programação, o básico do básico para processar dados de genômica e metagenômica
 * Uso de ferramentas locais para análise de seus dados
+
 ---
 ## Neste módulo **Não** vamos a aprender:
 * Detalhes dos algoritmos utilizados
 * Programação direta (A maioria dos *scripts* já estão prontos)
+
 ---
 ## Sistema Operacional - GNU/LINUX
 * Software livre e de código aberto
@@ -678,6 +745,7 @@ class: center, middle, inverse
 * Multitarefa
 * Multiusuário
 .center[ ![dna](https://media.giphy.com/media/4N5ddOOJJ7gtKTgNac/giphy.gif) ]
+
 ---
 ## GUI vs CLI
 * GUI: *Graphical User Interface*
@@ -690,6 +758,7 @@ class: center, middle, inverse
   * Linha de comando (Tela preta + códigos)
   * Fácil automatização
   * Maioria das ferramentas de bioinformática usam linha de comando
+  
 ---
 ## Shell
 O *shell* do Linux é um interpretador da linha de comando. É uma ferramenta que
@@ -719,6 +788,7 @@ necessário digitar o *prompt* quando façam comandos de exemplo. Só digitem o 
 está **depois** do *prompt*.
 As vezes, antes do *prompt* pode ter outras informações como o nome do usuário.
 É hora de tentar o primeiro comando...
+
 ---
 ## Mais antes uma informação importante...
 Ao igual que o Windows ou o Mac, o Linux está organizado em diretórios, portanto
@@ -780,6 +850,7 @@ knitr::include_graphics("03.Images/diretorios2.png")
 .blue[**Agora é sua vez...**]
 * Qual é seu diretório de trabalho?
 ] ]
+
 ---
 ## `ls` - *list*
 .panelset[ .panel[.panel-name[`ls`]
@@ -840,6 +911,7 @@ Se o diretório `anaconda3` não existe no seu diretório atual, será retornado
 erro. Normalmente, o diretório `anaconda3` existe dentro de seu diretório
 `home`.
 ] ]
+
 ---
 ## Sintaxe geral dos comandos no shell
 Normalmente, um comando se divide em: comando, opções e argumentos.
@@ -1008,6 +1080,7 @@ $ nano teste.txt
 ```
 * Confira que conteúdo do diretório.
 ] ] ]
+
 ---
 ## `mv` - *Move*
 .panelset[ .panel[.panel-name[`mv`]
@@ -1111,8 +1184,11 @@ dados e o chama de `estatsticos.txt`
 Depois criar e salvar este arquivo, você percebeu que errou na escrita no nome,
 e você quer corrigir o erro. Qual dos seguinte comando poderia ser usado para
 isso?
-1. `cp estatsticos.txt estatisticos.txt` 2. `mv estatsticos.txt
-estatisticos.txt` 3. `mv estatsticos.txt .` 4. `cp estatsticos.txt .`
+1. `cp estatsticos.txt estatisticos.txt` 
+2. `mv estatsticos.txt
+estatisticos.txt` 
+3. `mv estatsticos.txt .` 
+4. `cp estatsticos.txt .`
 ---
 ## `rm` - *Remove*
 .panelset[ .panel[.panel-name[`rm`]
@@ -1146,6 +1222,7 @@ Faça o teste:
 * Delete ele usando a opção `-i`
 * O que aconteceu?
 ] ]
+
 ---
 ## Caracteres Curingas
 .panelset[ .panel[.panel-name[Asterístico]
@@ -1183,14 +1260,19 @@ $
 class: inverse
 ## Quiz
 Quando executa dentro do diretório
-`~/curso_senai/comandos_basicos/02.Exercicio`, qual dos comandos `ls` poderia
-produzir o seguinte *output*?
+`~/curso_senai/comandos_basicos/02.Exercicio`, qual dos comandos `ls` poderia produzir o seguinte *output*?
+
 .green[Output] .code-bg-gray[
 ```
 ethanol.txt metanol.txt
 ```
 ]
-1. `ls *t*nol.txt` 2. `ls *ta?ol.*` 3. `ls *et?nol.txt` 4. `ls etanol.*`
+
+1. `ls *t*nol.txt` 
+2. `ls *ta?ol.*` 
+3. `ls *et?nol.txt` 
+4. `ls etanol.*`
+
 ---
 class: inverse
 ## Quiz
@@ -1204,6 +1286,7 @@ objetivo é copiar a estrutura do diretório `18-09-2023` no diretório
 knitr::include_graphics("03.Images/tree.png")
 ```
 * Qual dos seguintes conjuntos de comandos poderiam atingir o objetivo?
+
 ---
 class: inverse
 ## Quiz
@@ -1449,8 +1532,7 @@ $ unzip meudiretorio.zip
 ] ]
 ---
 ## Capturando o *output* dos comandos
-Ao igual que a gente viu com a saida do comando `cat`, isso pode ser feito para
-tudo o que gera um *output* que é normalmente mostrado na tela.
+Ao igual que a gente viu com a saida do comando `cat`, isso pode ser feito para tudo o que gera um *output* que é normalmente mostrado na tela.
 Por exemplo: (dentro da pastas `~/curso_senai/comandos_basicos/exercicios/`)
 .orange[Input] .code-bg-gray[.can-edit[
 ```
@@ -1489,6 +1571,7 @@ $ sort -n linhas.txt > linhas_ordenado.txt
 ```
 ]]
 * Use os comandos de visualização para dar uma olhada no arquivo `linhas_ordenado.txt`
+
 ---
 ## Capturando o *output* dos comandos
 Além do operador `>`, também temos um operado similar `>>`, o qual funciona um
@@ -1531,8 +1614,10 @@ $ head -n 3 bacterias.csv  > bacterias_sub.csv
 $ tail -n 2 bacterias.csv >> bacterias_sub.csv
 ```
 ]]
-1. As primeiras três linhas de `bacterias.csv` 2. As duas últimas linhas de
-`bacterias.csv` 3. As primeiras três e as últimas duas linhas de `bacterias.csv`
+1. As primeiras três linhas de `bacterias.csv` 
+2. As duas últimas linhas de
+`bacterias.csv` 
+3. As primeiras três e as últimas duas linhas de `bacterias.csv`
 4. A segunda e a terceira linha de `bacterias.css`
 ---
 ## Combinando múltiplos comandos
@@ -1571,8 +1656,10 @@ class: inverse
 ## Quiz
 Suponha que você que encontrar os três arquivos com menor número de linhas. Qual
 comando seria o correcto?
-1. `wc -l * > sort -n > head -n 3` 2. `wc -l * | sort -n | head -n 1-3` 3. `wc
--l * | head -n 3 | sort -n` 4. `wc -l * | sort -n | head -n 3`
+1. `wc -l * > sort -n > head -n 3` 
+2. `wc -l * | sort -n | head -n 1-3` 
+3. `wc -l * | head -n 3 | sort -n` 
+4. `wc -l * | sort -n | head -n 3`
 ---
 ## Mais comandos úteis de Linux
 ```
@@ -1604,16 +1691,12 @@ o uso de *loops* também reduz a quantidade de digitação necessária, reduzind
 também o número de erros de digitação.
 ---
 ## *Loops*
-Imagine que tem centenas de arquivos com genomas de bacterias chamados
-`bacteria_a`, `bacteria_b` e `bacteria_c` (descarregue os arquivos). Para o
-exemplo só teremos esses três arquivos, mas os principios podem ser aplicados a
-muitos mais arquivos ao mesmo tempo.
-A estrutura destes arquivos é a mesma, o nome abreviado, a classificação
-taxonômica e a data de atualização, estão nas primeiras três linhas, seguido de
-sequências de DNA en las demais linhas. Dê uma olhada nos arquivos. Mas antes,
-crie uma pasta chamada `05.Exercicio`, dentro do diretório
-`~/curso_senai/comandos_basicos/`. Coloque os arquivos dentro da nova pasta
-criada.
+Imagine que tem centenas de arquivos com genomas de bacterias chamados `bacteria_a`, `bacteria_b` e `bacteria_c` (descarregue os arquivos). Para o exemplo só teremos esses três arquivos, mas os principios podem ser aplicados amuitos mais arquivos ao mesmo tempo.
+
+A estrutura destes arquivos é a mesma, o nome abreviado, a classificação taxonômica e a data de atualização, estão nas primeiras três linhas, seguido de sequências de DNA en las demais linhas. Dê uma olhada nos arquivos. Mas antes, crie uma pasta chamada `05.Exercicio`, dentro do diretório `~/curso_senai/comandos_basicos/`. 
+
+Coloque os arquivos dentro da nova pasta criada.
+
 .orange[Output] .code-bg-gray[.can-edit[
 ```
 $ head -n 5 bacteria_*
@@ -1621,10 +1704,10 @@ $ head -n 5 bacteria_*
 ]]
 ---
 ## *Loops*
-Gostariamos de imprimir a classificação de cada espécie (segunda linha). Para
-cada arquivo precisariamos executar o comando `head -n 2` e enviar a saída
-direto para `tail -n 1`. Usaremos um *loop* para resolver esse problema.
+Gostariamos de imprimir a classificação de cada espécie (segunda linha). Para cada arquivo precisariamos executar o comando `head -n 2` e enviar a saída direto para `tail -n 1`. Usaremos um *loop* para resolver esse problema.
+
 Mas antes, essa é a estrutura genérica de um *loop* em forma de pseudocódigo:
+
 .code-bg-gray[
 ```
 for i in lista_de_elementos
@@ -1639,7 +1722,9 @@ done
 ]
 ---
 ## *Loops*
-No nosso exemplo, ficaria assim: .orange[Input] .code-bg-gray[.can-edit[
+No nosso exemplo, ficaria assim: 
+
+.orange[Input] .code-bg-gray[.can-edit[
 ```
 $ for arquivo in bacteria_a bacteria_b bacteria_c
 > do
@@ -1664,24 +1749,27 @@ CLASSIFICAÇÃO: Bacillus subtilis
 * O prompt muda de `$` a `>` para nos lembrar que não temos completado o comando ainda. Volta ao normal quando o comando está terminado.
 * Quando o sistema ve a palavra `for`, entende que deve repetir um o vários comandos para cada um dos elementos em uma lista. Cada vez que o *loop* é executado (chamado de iteração), um item da lista é atribuído à variável, e os comandos dentro do *loop* são executados, antes de passar para o próximo item da lista.
 * Dentro do *loop* chamamos o valor da variável usando o `$`, para o sistema entender como uma variável e não como texto.
+
 ---
 ## *Loops*
 **No nosso exemplo**
+
 A nossa lista contém três arquivos: `bacteria_a`, `bacteria_b`, `bacteria_c`.
-Cada vez que o *loop* itera: 1. Usamos `echo` para imprimir o valor atribuido à
-variável `$arquivo` nessa iteração. Isto não é obrigatório, mas é uma boa
-prática para ter mais facilidade para acompanhar os resultados. 2. É executado o
-comando `head` no elemento que está sendo iterado (valor de `$arquivo`),
-extraíndo as duas primeiras linhas do arquivo (*output*) 3. O *output* do
-comando `head` é enviado diretamente pro comando `tail` que então imprime a
-segunda linha. Termina a primeira iteração. 4. O processo começa de novo, com o
-seguinte item da lista, e assim vai até iterar em todos os elementos da lista.
+Cada vez que o *loop* itera: 
+1. Usamos `echo` para imprimir o valor atribuido à variável `$arquivo` nessa iteração. Isto não é obrigatório, mas é uma boa prática para ter mais facilidade para acompanhar os resultados. 
+2. É executado o comando `head` no elemento que está sendo iterado (valor de `$arquivo`), extraíndo as duas primeiras linhas do arquivo (*output*) 
+3. O *output* do comando `head` é enviado diretamente pro comando `tail` que então imprime a segunda linha. Termina a primeira iteração. 
+4. O processo começa de novo, com o seguinte item da lista, e assim vai até iterar em todos os elementos da lista.
+
 * Lembrando o nome da variável pode ser o que a gente quiser, mas sempre é uma boa prática colocar um nome que indique ao que esta-se referindo. Outro bom nome para a variável no exemplo anterior poderia ser `$genoma`
+
 ---
 class: inverse
 ## Quiz
 * Tente escrever um *loop*, que use o comando `echo` para imprimir na tela os números de 0 a 9?
-.orange[Input] .code-bg-gray[.can-edit[
+
+.orange[Input] 
+.code-bg-gray[.can-edit[
 ```
 $
 ```
@@ -1690,11 +1778,14 @@ $
 class: inverse
 ## Quiz
 * No directório `~/curso_senai/comandos_basicos/02.Exercicio/` o comando `ls *.txt`
-.green[Output] .code-bg-gray[.can-edit[
+
+.green[Output] 
+.code-bg-gray[.can-edit[
 ```
 etanol.txt	metanol.txt	pentanol.txt	propanol.txt
 ```
 ]]
+
 * Qual seria o *output* do seguinte código?
 .code-bg-gray[.can-edit[
 ```
@@ -1727,6 +1818,7 @@ etanol.txt	metanol.txt	pentanol.txt	propanol.txt
 ```
 ]]
 * Em cada elemento que o *loop* itera, ele lista os elementos que terminam em `.txt`.
+
 ---
 class: inverse
 ## Quiz
@@ -1752,13 +1844,15 @@ $ for alcool in e*
 > done
 ```
 ]
-1. Não é listado nenhum arquivo 2. Todos os arquivos são listados 3.
-`metanol.txt`, `etanol.txt` e `pentanol.txt` são listados 4. Só `etanol.txt`
-será listado
+1. Não é listado nenhum arquivo 
+2. Todos os arquivos são listados 
+3. `metanol.txt`, `etanol.txt` e `pentanol.txt` são listados 
+4. Só `etanol.txt` será listado
 ---
 class: inverse
 ## Quiz
 * E agora?
+
 .code-bg-gray[
 ```
 $ for alcool in *e*
@@ -1767,9 +1861,12 @@ $ for alcool in *e*
 > done
 ```
 ]
-1. Os mesmos arquivos serão listados 2. Todos os arquivos são listados desta vez
-3. Nenhum arquivo será listado 4. Os arquivos `metanol.txt`, `etanol.txt`,
-`pentanol.txt` serão listados? 5. Só o arquivo `etanol.txt` será listado
+1. Os mesmos arquivos serão listados 
+2. Todos os arquivos são listados desta vez
+3. Nenhum arquivo será listado 
+4. Os arquivos `metanol.txt`, `etanol.txt`,
+`pentanol.txt` serão listados? 
+5. Só o arquivo `etanol.txt` será listado
 ---
 class: inverse
 ## Quiz
@@ -1786,10 +1883,10 @@ done
 ```
 ]
 1. Printa na tela `etanol.txt`, `metanol.txt`, `pentanol.txt` e `propanol.txt`,
-e salva o conteúdo de `propanol.txt` num arquivo chamado `alcoois` 2. Printa na
-tela `etanol.txt` e `metanol.txt`, e o texto dos outros dos arquivos é salvado
-dentro de `alcoois` 3. Printa `etanol.txt`, `metanol.txt` e `pentanol.txt`, e o
-texto de `propanol.txt` é salvo no arquivo `alcoois` 4. Nenhuma das anteriores
+e salva o conteúdo de `propanol.txt` num arquivo chamado `alcoois` 
+2. Printa na tela `etanol.txt` e `metanol.txt`, e o texto dos outros dos arquivos é salvado dentro de `alcoois` 
+3. Printa `etanol.txt`, `metanol.txt` e `pentanol.txt`, e o texto de `propanol.txt` é salvo no arquivo `alcoois` 
+4. Nenhuma das anteriores
 ---
 class: inverse
 ## Quiz
@@ -1802,17 +1899,17 @@ do
 done
 ```
 ]
-1. O texto de todos os arquivos terminados em `*.txt` sera concatenado e salvado
-no arquivo chamado `todos` 2. O texto de `etanol.txt` será salvado no arquivo
-`todos` 3. O texto de todos os arquivos terminados em `*.txt` serão printados na
-tela e salvos no arquivo `todos`
+1. O texto de todos os arquivos terminados em `*.txt` sera concatenado e salvado no arquivo chamado `todos` 
+2. O texto de `etanol.txt` será salvado no arquivo `todos` 
+3. O texto de todos os arquivos terminados em `*.txt` serão printados na tela e salvos no arquivo `todos`
 ---
 ## *Loops*
 ### Agora mais complexo ainda
-Continuando com o nosso exemplo dos genomas das bacterias no diretório
-`~/curso-senai/comandos_basicos/05.Exercicio/`. Vamos ver um *loop* um pouco
-mais complexo:
-.orange[Input] .code-bg-gray[.can-edit[
+Continuando com o nosso exemplo dos genomas das bacterias no diretório `~/curso-senai/comandos_basicos/05.Exercicio/`. 
+Vamos ver um *loop* um pouco mais complexo:
+
+.orange[Input] 
+.code-bg-gray[.can-edit[
 ```
 $ for genoma in bacteria_*
 > do
@@ -1821,16 +1918,13 @@ $ for genoma in bacteria_*
 done
 ```
 ]]
-A cada iteração é printado na tela o genoma iterado, as primeiras 100 linhas são
-enviadas diretamente para o `tail`, que extrai as últimas 20 linhas dessas 100
-(linhas 81 - 100) e esse resultado é printado na tela.
+A cada iteração é printado na tela o genoma iterado, as primeiras 100 linhas são enviadas diretamente para o `tail`, que extrai as últimas 20 linhas dessas 100 (linhas 81 - 100) e esse resultado é printado na tela.
 ---
 ## *Loops*
-Agora vamos supor que a gente quer modificar os arquivos, porém quer manter as
-versões originais deles. Para isto vamos copiar os arquivos originais e vamos
-modificar os nomes para `original_bacteria_a`, `original_bacteria_b` e
-`original_bacteria_c`
-.orange[Input] .code-bg-gray[.can-edit[
+Agora vamos supor que a gente quer modificar os arquivos, porém quer manter as versões originais deles. Para isto vamos copiar os arquivos originais e vamos modificar os nomes para `original_bacteria_a`, `original_bacteria_b` e `original_bacteria_c`
+
+.orange[Input] 
+.code-bg-gray[.can-edit[
 ```
 $ for $bacteria in bacteria_*
 > do
@@ -1840,7 +1934,9 @@ $ for $bacteria in bacteria_*
 ]]
 * Confira o resultado
 * Que modificação faria ao comando para saber com que arquivo está trabalhando e/ou se o *loop* foi executado?
+
 ---
+
 ## *Loops*
 ### Graficamente
 ```{r, echo=FALSE, fig.align = 'center', out.width = "30%"}
@@ -1848,11 +1944,7 @@ knitr::include_graphics("03.Images/loop.png")
 ```
 ---
 ## `screen`
-O `screen` é uma aplicação desenvolvida para linux, que tem como objetivo a
-multiplexação de terminais. Ou seja, ele divide o terminal físico em várias
-sessões virtuais. Quando você está trabalhando conectado remotamente a um
-servidor, e usa o `screen`, você pode deixar os seus processos em execução e
-desligar seu computador, eles ficaram rodando em *background*.
+O `screen` é uma aplicação desenvolvida para linux, que tem como objetivo a multiplexação de terminais. Ou seja, ele divide o terminal físico em várias sessões virtuais. Quando você está trabalhando conectado remotamente a um servidor, e usa o `screen`, você pode deixar os seus processos em execução e desligar seu computador, eles ficaram rodando em *background*.
 ---
 ## `screen`
 Para iniciar uma sessão: .orange[Input] .code-bg-gray[.can-edit[
@@ -1860,9 +1952,9 @@ Para iniciar uma sessão: .orange[Input] .code-bg-gray[.can-edit[
 $ screen -S minhaSessao
 ```
 ] ]
-Para sair da sessão mantenha apertada a tecla **Ctrl**, enseguida aperte a tecla
-**a**, seguido da tecla **d**.
-Para voltar na sessão .orange[Input] .code-bg-gray[.can-edit[
+
+Para sair da sessão mantenha apertada a tecla **Ctrl**, enseguida aperte a tecla **a**, seguido da tecla **d**. Para voltar na sessão .orange[Input] 
+.code-bg-gray[.can-edit[
 ```
 $ screen -ls #Lista as sessões ativas, caso não lembre o nome
 $ screen -r minhaSessao #entra na sessão desejada.
@@ -1870,8 +1962,7 @@ $ screen -r minhaSessao #entra na sessão desejada.
 ]]
 ---
 ## `scp` *Secure Copy Between Machines*
-`scp` é um comando que permite copiar elementos entre um servidor e seu
-computador e viceversa.
+`scp` é um comando que permite copiar elementos entre um servidor e seu computador e viceversa.
 .code-bg-gray[.can-edit[
 ```
 $ scp origem destino
@@ -1897,9 +1988,10 @@ class: inverse, center, middle
 
 ---
 ## Anaconda
+
 **Anaconda** è uma distribuição livre e aberta de várias linguagens, entre elas *Python* e *R*, utilizada na ciência de dados e bioinformática. As diferentes versões dos programas se administram mediante um sistema de gestão chamado *conda*, o qual faz bastante simples instalar, executar e atualizar programas.
-As instruções de instalação de conda estão
-[aqui](https://conda.io/projects/conda/en/latest/user-guide/install/index.html#regular-installation)
+
+As instruções de instalação de conda estão [aqui](https://conda.io/projects/conda/en/latest/user-guide/install/index.html#regular-installation)
 
 ---
 ## Anaconda
@@ -2073,17 +2165,27 @@ knitr::include_graphics("03.Images/workflow2.png")
 ---
 ### Por que é necessário revisar a qualidade das sequências?
 Todas etapas do sequenciamento são suceptíveis de ter erros:
+
 --
+
 * Amplificação por PCR
+
 --
+
 * Adição das bases pela polimerase
+
 --
+
 * *Base-calling*
+
 --
+
 * Taxa de erro da Illumina ~0.1%**
+
 --
 
 [**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#0-organiza%C3%A7%C3%A3o-dos-dados)
+
 ---
 class: center, middle, inverse
 
@@ -2157,7 +2259,7 @@ knitr::include_graphics("03.Images/scafold.png")
 Existem diferentes algorítmos para montar genomas, e devem ser usados segundo o tipo de sequências (curtas ou longas).
 
 .center[
-![](https://media.giphy.com/media/3o7527pa7qs9kCG78A/giphy.gif
+![](https://media.giphy.com/media/3o7527pa7qs9kCG78A/giphy.gif)
 ]
 
 ---
@@ -2178,7 +2280,7 @@ Sequência de instruções ou comandos realizados de forma sistemática com a fi
 
 Sequência de instruções ou comandos realizados de forma sistemática com a finalidade de resolver um problema ou executar uma determinada tarefa. Ou é um conjunto específico de instruções lógicas para executar uma tarefa ou resolver um problema.
 
-```{r, echo=FALSE, fig.align = 'center', out.width = "50%"}
+```{r, echo=FALSE, fig.align = 'center', out.width = "30%"}
 knitr::include_graphics("03.Images/tarefa-algoritmo.png")
 ```
 
