@@ -19,7 +19,7 @@
     <script src="index_files/xaringanExtra-progressBar/progress-bar.js"></script>
     <link href="index_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="index_files/tile-view/tile-view.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"dccd578184a74bf7b62db731a0bb6986","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a3af60e4e48844149521fab98337984b","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -1855,12 +1855,14 @@ class: inverse, center, middle
 ### Entendendo o arquivo `.fastq` ou `.fq`
 &lt;img src="03.Images/fastq.png" width="80%" style="display: block; margin: auto;" /&gt;
 * Em sequenciamentos *paired-end*, são dois arquivos, um com as *reads* *forward* e outro com as *reads reverse*.
+
 ---
 ## Lembrando o que significa *paired-end*
 &lt;img src="03.Images/se_pe.png" width="80%" style="display: block; margin: auto;" /&gt;
 ---
 ### Entendendo o arquivo `.fastq` ou `.fq`
 &lt;img src="03.Images/fastq2.png" width="60%" style="display: block; margin: auto;" /&gt;
+
 --
 * Cabeçalho
   * Cada sequência começa com *@*
@@ -1868,34 +1870,60 @@ class: inverse, center, middle
   * Informação da *flowcell* (ID, coordenadas, bloco)
   * Número do par
   * Sequencia dos adaptadores
+  
 --
+
 * Sequência
   * Tamanho em Illumina de até 300 bp
+  
 --
+
 * Símbolo *+*
   * Nem sempre está. A função é separador de informações
+  
 --
+
 * Qualidade
+
 ---
 ### Phred Quality Score
+
 * A qualidade das sequências está determinada por la nota o *score Phred (q)*
-Segundo a seguinte equação: `$$q = -10 * log_{10}(P)$$` Onde, `\(q\)` é a nota *Phred*
-e `\(P\)` é a probabilidade que a base esteja errada. Assim então:
+
+Segundo a seguinte equação:
+
+`$$q = -10 * log_{10}(P)$$` 
+
+Onde, 
+
+`\(q\)` é a nota *Phred*
+
+e `\(P\)` é a probabilidade que a base esteja errada.
+
+Assim então:
+
 * `\(q = 10\)` é 1 base errada a cada 10 (90%); `\(p = 0.1\)`
+
 * `\(q = 20\)` é 1 base errada a cada 100 (99%); `\(p = 0.01\)`
+
 * `\(q = 30\)` é 1 base errada a cada 1000 (99.9%); `\(p = 0.001\)`
+
 --
+
 **Mínimo aceitável é** `\(q &gt; 20\)`, o **ideal** é `\(q &gt; 30\)`
+
 ---
 ### Phred Quality Score
 Para facilitar a escrita e leitura da informação de qualidade, é usada a table
 *ASCII*, para transformar os dois dígitos da nota *Phred* em um único caráter,
 para bater com cada base da sequência.
 [ASCII table](https://www.asciitable.com/)
+
 ---
 ## Como avaliar a qualidade das sequências
 `FASTQC` é uma ferramenta que permite visualizar a informação de qualidade das
 sequências de uma manera gráfica e interativa.
+
 ---
 ## Trimmagem (Filtragem)
 É o processo de remoção de `reads` com baixa qualidade. É possível filtrar
@@ -1906,6 +1934,7 @@ Alguns programas:
 * Trimmomatic
 * Trimgalore
 * Fastx tool kit
+
 ---
 class: inverse, middle, center
 ## Tempo de colocar em prática!

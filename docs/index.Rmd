@@ -1966,6 +1966,7 @@ knitr::include_graphics("03.Images/workflow.png")
 knitr::include_graphics("03.Images/fastq.png")
 ```
 * Em sequenciamentos *paired-end*, são dois arquivos, um com as *reads* *forward* e outro com as *reads reverse*.
+
 ---
 ## Lembrando o que significa *paired-end*
 ```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
@@ -1976,6 +1977,7 @@ knitr::include_graphics("03.Images/se_pe.png")
 ```{r, echo=FALSE, fig.align = 'center', out.width = "60%"}
 knitr::include_graphics("03.Images/fastq2.png")
 ```
+
 --
 * Cabeçalho
   * Cada sequência começa com *@*
@@ -1983,34 +1985,60 @@ knitr::include_graphics("03.Images/fastq2.png")
   * Informação da *flowcell* (ID, coordenadas, bloco)
   * Número do par
   * Sequencia dos adaptadores
+  
 --
+
 * Sequência
   * Tamanho em Illumina de até 300 bp
+  
 --
+
 * Símbolo *+*
   * Nem sempre está. A função é separador de informações
+  
 --
+
 * Qualidade
+
 ---
 ### Phred Quality Score
+
 * A qualidade das sequências está determinada por la nota o *score Phred (q)*
-Segundo a seguinte equação: $$q = -10 * log_{10}(P)$$ Onde, $q$ é a nota *Phred*
-e $P$ é a probabilidade que a base esteja errada. Assim então:
+
+Segundo a seguinte equação:
+
+$$q = -10 * log_{10}(P)$$ 
+
+Onde, 
+
+$q$ é a nota *Phred*
+
+e $P$ é a probabilidade que a base esteja errada.
+
+Assim então:
+
 * $q = 10$ é 1 base errada a cada 10 (90%); $p = 0.1$
+
 * $q = 20$ é 1 base errada a cada 100 (99%); $p = 0.01$
+
 * $q = 30$ é 1 base errada a cada 1000 (99.9%); $p = 0.001$
+
 --
+
 **Mínimo aceitável é** $q > 20$, o **ideal** é $q > 30$
+
 ---
 ### Phred Quality Score
 Para facilitar a escrita e leitura da informação de qualidade, é usada a table
 *ASCII*, para transformar os dois dígitos da nota *Phred* em um único caráter,
 para bater com cada base da sequência.
 [ASCII table](https://www.asciitable.com/)
+
 ---
 ## Como avaliar a qualidade das sequências
 `FASTQC` é uma ferramenta que permite visualizar a informação de qualidade das
 sequências de uma manera gráfica e interativa.
+
 ---
 ## Trimmagem (Filtragem)
 É o processo de remoção de `reads` com baixa qualidade. É possível filtrar
@@ -2021,6 +2049,7 @@ Alguns programas:
 * Trimmomatic
 * Trimgalore
 * Fastx tool kit
+
 ---
 class: inverse, middle, center
 ## Tempo de colocar em prática!
