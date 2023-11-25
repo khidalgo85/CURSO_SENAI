@@ -521,7 +521,9 @@ um deles, consulte o
 
 #### 1.2.1. Instalação de Trimmomatic com `conda`
 
-## Como se trata de uma ferramenta que participa dentro do processo de control de qualidade, será instalada dentro do ambiente virtual *qualidade*.
+Como se trata de uma ferramenta que participa dentro do processo de
+control de qualidade, será instalada dentro do ambiente virtual
+*qualidade*.
 
 - Senão estiver ativo o ambiente qualidade, ativé-o
 
@@ -627,7 +629,7 @@ A montagem será realizada executando o comando:
 > com o objetivo de manter a execução do comando ainda com a perda da
 > conexão.
 
-    nohup spades.py --careful -1 02.CleanData/genoma_R1.pair.fq -2 02.CleanData/genoma_R2.pair.fq -k 21,33,55,77,99,111,127 -o 03.Montagem/ -t 3
+    nohup spades.py --careful -1 02.DadosLimpos/genoma_R1.pair.fq -2 02.DadosLimpos/genoma_R2.pair.fq -k 21,33,55,77,99,111,127 -o 03.Montagem/ -t 3 &
 
 Vamos a explorar os arquivos de saída. O que é um arquivo fasta?
 

@@ -453,8 +453,7 @@ Para maiores detalhes sobre a interpretação e análise dos relatórios do Fast
 
 ### 1.2. Trimagem e filtragem de sequências
 
-[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) é um programa pra
-filtrar (remover) *reads* e/ou bases de baixa qualidade.
+[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) é um programa pra filtrar (remover) *reads* e/ou bases de baixa qualidade.
 
 Trimmomatic tem vários parâmetros que podem ser considerados para filtrar leituras com baixa qualidade. No presente tutorial usaremos alguns deles. Se quiser saber que otros parâmetros e como funciona cada um deles, consulte o [manual](http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf).
 
@@ -475,7 +474,7 @@ Trimmomatic tem vários parâmetros que podem ser considerados para filtrar leit
 #### 1.2.1. Instalação de Trimmomatic com `conda`
 
 Como se trata de uma ferramenta que participa dentro do processo de control de qualidade, será instalada dentro do ambiente virtual *qualidade*.
---
+
 * Senão estiver ativo o ambiente qualidade, ativé-o
 
 ```
