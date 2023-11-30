@@ -142,6 +142,10 @@ knitr::opts_chunk$set(
 
 ### [SLIDES](https://khidalgo85.github.io/CURSO_SENAI/#1)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e55d08db7c7362d5db107eb40b4dc556668ae3f0
 ---
 
 # Prática I
@@ -666,3 +670,7 @@ checkm lineage_wf 03.Montagem/ 04.QualidadeMontagem/ -t 3 -x fasta --tab > 04.Qu
 Explore o arquivo de saída `04.QualidadeMontagem/output.txt` usando o comando `less`. Descarregue o relatório no seu computador.
 
 Para mais detalhes sobre a interpretação do relatório visite este [link.](https://www.biostars.org/p/447744/)
+<<<<<<< HEAD
+=======
+
+>>>>>>> e55d08db7c7362d5db107eb40b4dc556668ae3f0
