@@ -569,6 +569,10 @@ executando FastQC para as sequências pareadas
 
     fastqc 02.DadosLimpos/*.pair.fq -o 01.FastqcRelatorios/
 
+------------------------------------------------------------------------
+
+# Prática II
+
 ## 2. Montagem *de novo*
 
 ### 2.1. Montagem com `Spades`
@@ -744,6 +748,10 @@ comando `less`. Descarregue o relatório no seu computador.
 Para mais detalhes sobre a interpretação do relatório visite este
 [link.](https://www.biostars.org/p/447744/)
 
+------------------------------------------------------------------------
+
+# Prática III
+
 ## 3. Anotação taxonômica
 
 ### 3.1 Classificação taxonômica com `GTDB-tk`
@@ -793,3 +801,7 @@ arquivo `05.AnotacaoTaxonomica/gtdbtk.bac120.summary.tsv` contém todas
 as informações importantes.
 
 Explore o arquivo usando *Excel*.
+
+------------------------------------------------------------------------
+
+# Prática IV

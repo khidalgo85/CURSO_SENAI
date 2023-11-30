@@ -19,11 +19,7 @@
     <script src="index_files/xaringanExtra-progressBar/progress-bar.js"></script>
     <link href="index_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="index_files/tile-view/tile-view.js"></script>
-<<<<<<< HEAD
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb782c97ec874051b11e5f386ed7575d","expires":1}</script>
-=======
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x3bf2d2cd4f749b7ac02b858b1c9a90e","expires":1}</script>
->>>>>>> e55d08db7c7362d5db107eb40b4dc556668ae3f0
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xe4707ccf3e54b15a1ce306a8670363a","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -676,56 +672,37 @@ class: center, middle, inverse
   
 ---
 ## Shell
-O *shell* do Linux é um interpretador da linha de comando. É uma ferramenta que
-permite aos usuários executar tarefas complexas e poderosas, geralmente com
-algumas linhas de código.
-Usar o *shell* exigirá algum esforço e algum tempo para aprender. Você terá que
-praticar os comandos como novo vocabulário de um idioma novo.
-No entanto, aprendendo um pequeno número de "palavras" (comandos), você terá
-percorrido já um longo caminho. Essas poucas porém essenciais palavras são as
-que aprenderemos.
-A gramática de um *shell* permite combinar ferramentas existentes em pipelines
-poderosos e lidar automaticamente com grandes volumes de dados.
-Sequencias de comandos podem ser escritas em um *script*, melhorando a
-reprodutibilidade dos fluxos de trabalho.
+O *shell* do Linux é um interpretador da linha de comando. É uma ferramenta que permite aos usuários executar tarefas complexas e poderosas, geralmente com algumas linhas de código.
+
+Usar o *shell* exigirá algum esforço e algum tempo para aprender. Você terá que praticar os comandos como novo vocabulário de um idioma novo. No entanto, aprendendo um pequeno número de "palavras" (comandos), você terá percorrido já um longo caminho. Essas poucas porém essenciais palavras são as que aprenderemos.
+
+A gramática de um *shell* permite combinar ferramentas existentes em pipelines poderosos e lidar automaticamente com grandes volumes de dados. Sequencias de comandos podem ser escritas em um *script*, melhorando a reprodutibilidade dos fluxos de trabalho.
 ---
 class: center, middle, inverse
 # Mãos a obra
 .center[ ![](https://media.giphy.com/media/MdA16VIoXKKxNE8Stk/giphy.gif) ]
 ---
 ## Abrindo o *shell*
-* Abra o aplicativo Ubuntu subsystem
-Quando o *shell* é aberto, apresentará o que se conhece com *prompt*, o que
-indica que o *shell* está pronto.
+* Abra o aplicativo Ubuntu subsystem Quando o *shell* é aberto, apresentará o que se conhece com *prompt*, o que indica que o *shell* está pronto.
 O *prompt* mais comúm é `$`
-Nos exemplos das aulas sempre aparecerá primeiro o *prompt* `$`. Não é
-necessário digitar o *prompt* quando façam comandos de exemplo. Só digitem o que
-está **depois** do *prompt*.
+Nos exemplos das aulas sempre aparecerá primeiro o *prompt* `$`. Não é necessário digitar o *prompt* quando façam comandos de exemplo. Só digitem o que está **depois** do *prompt*.
 As vezes, antes do *prompt* pode ter outras informações como o nome do usuário.
+
 É hora de tentar o primeiro comando...
 
 ---
 ## Mais antes uma informação importante...
-Ao igual que o Windows ou o Mac, o Linux está organizado em diretórios, portanto
-todos os arquivos são guardados nos diretórios.
-Depois a gente volta no conceito de estrutura dos diretórios no Linux.
+Ao igual que o Windows ou o Mac, o Linux está organizado em diretórios, portanto todos os arquivos são guardados nos diretórios. Depois a gente volta no conceito de estrutura dos diretórios no Linux.
 ---
 ## Navegando por arquivos e diretórios
-O sistema responsável pelo gerenciamento dos arquivos e os diretórios é chamado
-de *file system*.
-Organiza os nossos dados dentro de arquivos, que carregam a informação, e
-diretórios ou pastas, que carregam arquivos ou outros diretórios.
-A continuação aprenderemos uma série de comandos que são usados frequentemente
-para criar, inspeccionar, renomear e deletar arquivos e diretórios.
+O sistema responsável pelo gerenciamento dos arquivos e os diretórios é chamado de *file system*. Organiza os nossos dados dentro de arquivos, que carregam a informação, e diretórios ou pastas, que carregam arquivos ou outros diretórios. 
+A continuação aprenderemos uma série de comandos que são usados frequentemente para criar, inspeccionar, renomear e deletar arquivos e diretórios.
 ---
 ## `pwd` - *Print Working Directory*
 .panelset[ .panel[.panel-name[`pwd`]
-Os diretórios são como *lugares*, sempre que estamos usando o *shell*, estamos
-exatamente em um lugar, chamado *current working directory* (diretório atual de
-trabalho). Os comandos leem e gravam principalmente arquivos no diretório atual
-de trabalho, ou seja, .yellow['aqui'], portanto é importantye saber onde você
-está antes de executar um comando.
+Os diretórios são como *lugares*, sempre que estamos usando o *shell*, estamos exatamente em um lugar, chamado *current working directory* (diretório atual de trabalho). Os comandos leem e gravam principalmente arquivos no diretório atual de trabalho, ou seja, .yellow['aqui'], portanto é importantye saber onde você está antes de executar um comando.
 `pwd` mostra onde você esta:
+
 .orange[Input] .code-bg-gray[
 ```
 $ pwd
@@ -740,15 +717,12 @@ $ pwd
 ]
 .panel[.panel-name[Graficamente]
 &lt;img src="03.Images/diretorios.png" width="60%" style="display: block; margin: auto;" /&gt;
-O sistema de arquivos do meu laptop, é algo assim. O diretório mais para cima, é
-o chamado **root**, o qual tem todos os arquivos e pastas do meu laptop. Se
-simboliza com a barra `/`. Essa barra é a mesma que está no `/Users/macbook`.
-Dentro do diretório *root*, tem outros diretórios, como são: `Applications`,
-`bin`, `etc`, `home`, `Users`, etc.
+O sistema de arquivos do meu laptop, é algo assim. O diretório mais para cima, é o chamado **root**, o qual tem todos os arquivos e pastas do meu laptop. Se simboliza com a barra `/`. Essa barra é a mesma que está no `/Users/macbook`. 
+Dentro do diretório *root*, tem outros diretórios, como são: `Applications`, `bin`, `etc`, `home`, `Users`, etc.
 Então, agora a gente sabe que o meu diretório atual de trabalho é
 `/Users/macbook` que está armazenado dentro `/Users`, porque `/Users` é a
-primeira parte do caminho. E assim, também percebemos que `/Users` está
-armazenado dentro do diretório *root* `/`, porque o caminho começa com `/`. ]
+primeira parte do caminho. E assim, também percebemos que `/Users` está armazenado dentro do diretório *root* `/`, porque o caminho começa com `/`. ]
+
 .panel[.panel-name[Nota 2]
 Note que a barra `/` tem dois significados. Quando aparece na frente de um
 arquicvo o diretório se refere ao diretório *root*. Quando aparece entre o
@@ -765,8 +739,7 @@ diretórios, *Shared* e *macbook*.
 ---
 ## `ls` - *list*
 .panelset[ .panel[.panel-name[`ls`]
-Agora sabemos qual é nosso diretório atual, mas e como podemos acceder ao
-conteúdo deste diretório?. O comando `ls` listará o conteúdo do diretório atual.
+Agora sabemos qual é nosso diretório atual, mas e como podemos acceder ao conteúdo deste diretório?. O comando `ls` listará o conteúdo do diretório atual.
 .orange[Input]
 .code-bg-gray[
 ```
@@ -778,11 +751,12 @@ $ ls
 ```
 anaconda3 snap
 ```
-] ] .panel[.panel-name[`ls -F`]
+] ] 
+
+.panel[.panel-name[`ls -F`]
 Comumente os comandos podem ser acompanhados por argumentos, mudando o
-resultado. Por exemplo se usarmos o argumento `-F`, pede para o `ls` classificar
-o conteúdo do diretório pelo tipo de elemento, por exemplo, diretório, arquivo
-ou executável. `/` : Diretório; `@` : é um link; `*` : executável.
+resultado. Por exemplo se usarmos o argumento `-F`, pede para o `ls` classificar o conteúdo do diretório pelo tipo de elemento, por exemplo, diretório, arquivo ou executável. `/` : Diretório; `@` : é um link; `*` : executável.
+
 .orange[Input]
 .code-bg-gray[
 ```
@@ -794,12 +768,14 @@ $ ls -F
 ```
 anaconda3/ snap/
 ```
-] ] .panel[.panel-name[Dica!]
+] ] 
+
+.panel[.panel-name[Dica!]
 **Nota:** Se você quiser limpar o seu terminal (*shell*), digite o comando `clear`. Usando as zetas ⬆️ ⬇️, podem ser recuperados linhas de comando digitadas anteriormente.
 ]
+
 .panel[.panel-name[Ajuda]
-Normalmente todos os comandos tem um menú de ajuda, onde você pode ver qual é a
-função desse comando e os argumentos que pode usar.
+Normalmente todos os comandos tem um menú de ajuda, onde você pode ver qual é a função desse comando e os argumentos que pode usar.
 .orange[Input]
 .code-bg-gray[
 ```
@@ -812,13 +788,10 @@ $ ls --help
 * Teste mais argumentos do comando `ls` (ex. `-r`, `-t`, `-l` e `-a`), e veja o que cada uma das opções faz.
 ]
 .panel[.panel-name[Explorando mais]
-`ls` não é somente para usar no diretório atual, também podem ser explorados
-outros diretórios.
-Dê uma olhada na pasta **anaconda3**, digitando `ls -F anaconda3`. Nesse exemplo
-o comando é `ls`, a opção é `-F` e o argumento é `anaconda3`.
+`ls` não é somente para usar no diretório atual, também podem ser explorados outros diretórios.
+Dê uma olhada na pasta **anaconda3**, digitando `ls -F anaconda3`. Nesse exemplo o comando é `ls`, a opção é `-F` e o argumento é `anaconda3`.
 O argumento `anaconda3` diz para `ls` que queremos listar o conteúdo de um
-diretório diferente ao atual, no caso o diretório `anaconda3`
-Se o diretório `anaconda3` não existe no seu diretório atual, será retornado um
+diretório diferente ao atual, no caso o diretório `anaconda3`. Se o diretório `anaconda3` não existe no seu diretório atual, será retornado um
 erro. Normalmente, o diretório `anaconda3` existe dentro de seu diretório
 `home`.
 ] ]
@@ -833,29 +806,23 @@ $ ls -l Escritorio
 ```
 ]
 &lt;img src="03.Images/sintaxe.png" width="60%" style="display: block; margin: auto;" /&gt;
-Também podem ser encontradas opções que além de começar com um traço simples
-(`-`), conhecido como opção curta, podem começar com dois traços (`--`). As
-opções mudam o comportamneto do comando e os argumentos falam para o comando a
-qual elemento será aplicado o comando (p.e. arquivos e diretórios). As vezes os
-argumentos também são chamados paramêtros. Um comando pode ter mais de uma opção
-e mais de um argumento, porém não sempre se requer um arguemnto ou uma opção.
+Também podem ser encontradas opções que além de começar com um traço simples (`-`), conhecido como opção curta, podem começar com dois traços (`--`). As opções mudam o comportamneto do comando e os argumentos falam para o comando a qual elemento será aplicado o comando (p.e. arquivos e diretórios). As vezes os argumentos também são chamados paramêtros. Um comando pode ter mais de uma opção e mais de um argumento, porém não sempre se requer um arguemnto ou uma opção.
 ---
 ## `mkdir` - *Make Dir*
-.panelset[ .panel[.panel-name[`mkdir`]
+.panelset[
+
+.panel[.panel-name[`mkdir`]
 O comando `mkdir` serve para criar diretórios.
-Antes de criar o nosso primeiro diretório, primeiro revisemos as boas práticas
-para nomear arquivos e diretórios.
-1. **Não** crie nomes com espaços. `curso_senai` é melhor que `curso senai` 2.
-**Não** é permitido o uso de caracteres especiais, como: $%&amp;*()+=¨;'?#@¡! 3.
-**Não** comece com `-`, os comandos tratam os nomes que como começam com `-`
-como as opções 4. Coloque nomes que sejam indicativos do que o arquivo ou
-diretório contem. `curso_senai` é melhor que `curso` 5. **Recomendação:** para
-trabalhos de passos sequenciais, facilita nomear os diretórios com números que
-indiquem a etapa do trabalho. `00.DadosBrutos` melhor que `DadosBrutos`,
-`01.Qualidade` melhor que `Qualidade` ]
+Antes de criar o nosso primeiro diretório, primeiro revisemos as boas práticas para nomear arquivos e diretórios.
+1. **Não** crie nomes com espaços. `curso_senai` é melhor que `curso senai` 
+2. **Não** é permitido o uso de caracteres especiais, como: $%&amp;*()+=¨;'?#@¡! 
+3. **Não** comece com `-`, os comandos tratam os nomes que como começam com `-` como as opções 4. Coloque nomes que sejam indicativos do que o arquivo ou diretório contem. `curso_senai` é melhor que `curso` 5. 
+
+**Recomendação:** para trabalhos de passos sequenciais, facilita nomear os diretórios com números que indiquem a etapa do trabalho. `00.DadosBrutos`  melhor que `DadosBrutos`, `01.Qualidade` melhor que `Qualidade` 
+]
+
 .panel[.panel-name[Uso]
-Criaremos um diretório para armazenar todo o relacionado ao curso. Esta será sua
-pasta durante o curso todo.
+Criaremos um diretório para armazenar todo o relacionado ao curso. Esta será sua pasta durante o curso todo.
 .orange[Input]
 .code-bg-gray[
 ```
@@ -868,15 +835,9 @@ $ mkdir curso_senai
 Uma vez criado o diretório do curso, criaremos uma pasta dentro dele para
 armazenar o relacioanado a nossa aula de comandos básicos de linux. Mas antes...
 * Identifique onde você está?
-Para conseguir criar o diretório dentro de `curso_senai`, primeiro temos que
-aprender o conceito de **caminho**
-O **caminho** de um diretório ou arquivo nada mais é que a localização completa
-desse elemento. Por exemplo `/root/curso_senai`: A pasta `curso_senai`, está
-dentro de `root` que a sua vez está dentro da pasta raiz `/`.
-Existem **caminhos absolutos** e **caminhos relativos**. O exemplo anterior é um
-caminho absoluto. O caracter `~` é interpretado por *shell* como o diretório
-*home* do usuario, ou seja `~/curso_senai` é o mesmo que `/root/curso_senai`,
-porque o diretório *home* no nosso caso é `/root/`.
+Para conseguir criar o diretório dentro de `curso_senai`, primeiro temos que aprender o conceito de **caminho**
+O **caminho** de um diretório ou arquivo nada mais é que a localização completa desse elemento. Por exemplo `/root/curso_senai`: A pasta `curso_senai`, está dentro de `root` que a sua vez está dentro da pasta raiz `/`.
+Existem **caminhos absolutos** e **caminhos relativos**. O exemplo anterior é um caminho absoluto. O caracter `~` é interpretado por *shell* como o diretório *home* do usuario, ou seja `~/curso_senai` é o mesmo que `/root/curso_senai`, porque o diretório *home* no nosso caso é `/root/`.
 ]
 .panel[.panel-name[Prática]
 Entendido o conceito de caminho...
@@ -889,11 +850,10 @@ $ mkdir
 ] ] ] ]
 ---
 ## `cd` - *Change Directory*
-.panelset[ .panel[.panel-name[`cd`]
-Até agora já aprendimos como nos localizar dentro do sistema de arquivos, o que
-é caminho e como criar diretórios, porém como entramos e saimos dos diretórios?
-O comando `cd` nos permite trocar entre diretórios, basta só indicar o caminho
-da pasta.
+.panelset[ 
+.panel[.panel-name[`cd`]
+Até agora já aprendimos como nos localizar dentro do sistema de arquivos, o que é caminho e como criar diretórios, porém como entramos e saimos dos diretórios? 
+O comando `cd` nos permite trocar entre diretórios, basta só indicar o caminho da pasta.
 Por exemplo, estando no diretório *home*, queremos ir à pasta que criamos
 anteriormente `curso_senai`
 .orange[Input]
@@ -903,15 +863,14 @@ $ cd curso_senai/
 ```
 ] ]
 * Como você pode comprovar que mudou de diretório?
+
 .panel[.panel-name[Atalhos]
 Existem algumas convenções para alguns diretórios genéricos.
 * Diretório atual: `.`
 * Diretório contenedor do diretório atual: `..`
+
 **Dica de ouro**
-Você pode usar a tecla **Tab** para autocompletar as palavras. Assim, economiza
-tempo, e evita erros de escrita, porque o sistema só vai completar nomes de
-elementos existentes no sistema. Só tem que escrever as primeiras letras da
-palavra e presionar tab, e o sistema autocompletará a palavra.
+Você pode usar a tecla **Tab** para autocompletar as palavras. Assim, economiza tempo, e evita erros de escrita, porque o sistema só vai completar nomes de elementos existentes no sistema. Só tem que escrever as primeiras letras da palavra e presionar tab, e o sistema autocompletará a palavra.
 ]
 .panel[.panel-name[Prática]
 .blue[**Agora é sua vez...**]
@@ -928,31 +887,40 @@ $
 ---
 class: inverse
 ## Quiz
-Use o diagrama de embaixo, se `pwd` imprime na tela `/Users/thing`, que sairá
-usando a linha de comando `ls -F ../backup`?
-1. `../backup: No such file or directory` 2. `2012-12-01 2013-01-08 2013-01-27`
-3. `2012-12-01/ 2013-01-08/ 2013-01-27/` 4. `original/ pnas_final/ pnas_sub/`
+Use o diagrama de embaixo, se `pwd` imprime na tela `/Users/thing`, que sairá usando a linha de comando `ls -F ../backup`?
+1. `../backup: No such file or directory` 
+2. `2012-12-01 2013-01-08 2013-01-27`
+3. `2012-12-01/ 2013-01-08/ 2013-01-27/` 
+4. `original/ pnas_final/ pnas_sub/`
+
 &lt;img src="03.Images/exercicio1.jpg" width="60%" style="display: block; margin: auto;" /&gt;
 ---
 class: inverse
 ## Quiz
-Estando no diretório `/root/curso_senai`, quais dos seguintes comando poderiamos
-usar para navegar e chegar no diretório home, que é `/root`?
-1. `cd .` 2. `cd /` 3. `cd /root` 4. `cd ../..` 5. `cd ~` 6. `cd home` 7. `cd
-~/curso_senai/..` 8. `cd` 9. `cd ..`
+Estando no diretório `/root/curso_senai`, quais dos seguintes comando poderiamos usar para navegar e chegar no diretório home, que é `/root`?
+1. `cd .` 
+2. `cd /` 
+3. `cd /root` 
+4. `cd ../..` 
+5. `cd ~` 
+6. `cd home` 
+7. `cd ~/curso_senai/..` 
+8. `cd` 
+9. `cd ..`
 ---
 class: inverse
 ## Quiz
-Use o diagrama de embaixo, se `pwd` imprime na tela `/Users/backup`, e -r diz
-para o `ls` imprimir o nomes dos elementos em ordem reversa, qual ou quais
-comandos daria o seguinte output:
-.green[Output] .code-bg-gray[
+Use o diagrama de embaixo, se `pwd` imprime na tela `/Users/backup`, e -r diz para o `ls` imprimir o nomes dos elementos em ordem reversa, qual ou quais comandos daria o seguinte output:
+.green[Output] 
+.code-bg-gray[
 ```
 pnas_sub/ pnas_final/ original/
 ```
 ]
 &lt;img src="03.Images/exercicio2.jpg" width="45%" style="display: block; margin: auto;" /&gt;
-1. `ls pwd` 2. `ls -r -F` 3. `ls -r -F /Users/backup`
+1. `ls pwd` 
+2. `ls -r -F` 
+3. `ls -r -F /Users/backup`
 ---
 ## `nano` - Editor de texto
 .panelset[ .panel[.panel-name[`nano`]
@@ -963,12 +931,7 @@ pnas_sub/ pnas_final/ original/
 $ nano teste.txt
 ```
 ]
-Para este curso vamos usar `nano` porque é um dos editores de texto plano mais
-simples de usar. No entanto por essa mesma razão ele não é tão podereso e
-flexível. Existem outros para Linux, como
-[**Emacs**](https://www.gnu.org/software/emacs/) e
-[**Vim**](https://www.vim.org/), porém ambos precisam de mais tempo para
-aprender usá-los. Em Windows, pode ser usado **Notepad++**
+Para este curso vamos usar `nano` porque é um dos editores de texto plano mais simples de usar. No entanto por essa mesma razão ele não é tão podereso e flexível. Existem outros para Linux, como [**Emacs**](https://www.gnu.org/software/emacs/) e [**Vim**](https://www.vim.org/), porém ambos precisam de mais tempo para aprender usá-los. Em Windows, pode ser usado **Notepad++**
 ]
 .panel[.panel-name[Prática]
 .blue[**Agora é sua vez...**]
@@ -989,9 +952,7 @@ $ nano teste.txt
 ---
 ## `mv` - *Move*
 .panelset[ .panel[.panel-name[`mv`]
-O comando `mv` serve para mover arquivos de uma pasta a outra. Além este comando
-também pode ser usado para mudar os nomes dos elementos. A sintaxe para mover
-arquivos è:
+O comando `mv` serve para mover arquivos de uma pasta a outra. Além este comando também pode ser usado para mudar os nomes dos elementos. A sintaxe para mover arquivos è:
 .orange[Input]
 .code-bg-gray[
 ```
@@ -1010,8 +971,7 @@ $
 ```
 ] ] ]
 .panel[.panel-name[Trocando o nome]
-O `mv` também serve para trocar os nomes dos arquivos ou pastas. A sintaxe para
-esta função é:
+O `mv` também serve para trocar os nomes dos arquivos ou pastas. A sintaxe para esta função é:
 .orange[Input]
 .code-bg-gray[
 ```
@@ -1031,9 +991,7 @@ $
 ---
 class: inverse
 ## Quiz
-Depois de executar os seguintes comandos, João colocou os arquivos `genes.txt` e
-`proteinas.txt` no diretório errado. Os arquivos deveriam estar no diretório
-`dados`.
+Depois de executar os seguintes comandos, João colocou os arquivos `genes.txt` e `proteinas.txt` no diretório errado. Os arquivos deveriam estar no diretório `dados`.
 .yellow[BASH]
 .code-bg-gray[
 ```
@@ -1054,9 +1012,8 @@ $ mv genes.txt proteinas.txt ___/___
 ---
 ## `cp` - *Copy*
 .panelset[ .panel[.panel-name[`cp`]
-O comando `cp` é similar ao `mv`, porém ele cópia o arquivo ao invés de
-transferir ele. Ou seja, ficará uma versão do arquivo na pasta original.
-A sintaxe deste comando é muito simples: .orange[Input]
+O comando `cp` é similar ao `mv`, porém ele cópia o arquivo ao invés de transferir ele. Ou seja, ficará uma versão do arquivo na pasta original. A sintaxe deste comando é muito simples: 
+.orange[Input]
 .code-bg-gray[
 ```
 $ cp diretorio_de_origem/arquivo.txt diretorio_de_destino/
@@ -1076,35 +1033,27 @@ $
 ```
 ] ] ]
 .panel[.panel-name[E diretórios?]
-Para cópiar arquivos é só usar a opção ou paramêtro `-r`.
-Lembrando que todos os comandos tem um menú de ajuda ao qual podem acessar com a
-opção `-h` ou `--help`.
+Para cópiar arquivos é só usar a opção ou paramêtro `-r`. Lembrando que todos os comandos tem um menú de ajuda ao qual podem acessar com a opção `-h` ou `--help`.
 ] ]
 ---
 class: inverse
 ## Quiz
-Suponha que você criou um arquivo de texto plano, no seu diretório atual que
-contem uma lista de testes estatísticos que você precisa para analisar seus
-dados e o chama de `estatsticos.txt`
-Depois criar e salvar este arquivo, você percebeu que errou na escrita no nome,
-e você quer corrigir o erro. Qual dos seguinte comando poderia ser usado para
-isso?
+Suponha que você criou um arquivo de texto plano, no seu diretório atual que contem uma lista de testes estatísticos que você precisa para analisar seus dados e o chama de `estatsticos.txt`. Depois criar e salvar este arquivo, você percebeu que errou na escrita no nome, e você quer corrigir o erro. Qual dos seguinte comando poderia ser usado para isso?
 1. `cp estatsticos.txt estatisticos.txt` 
-2. `mv estatsticos.txt
-estatisticos.txt` 
+2. `mv estatsticos.txt estatisticos.txt` 
 3. `mv estatsticos.txt .` 
 4. `cp estatsticos.txt .`
 ---
 ## `rm` - *Remove*
 .panelset[ .panel[.panel-name[`rm`]
 Com o comando `rm` você pode remover arquivos e ou pastas. A sintaxe é:
+
 .orange[Input] .code-bg-gray[
 ```
 $ rm arquivo.txt
 ```
 ]
-👀️**Neste tipo de sistemas não existe a lixeira, por tanto o que for deletado,
-não poderá ser recuperado, CUIDADO!**
+👀️**Neste tipo de sistemas não existe a lixeira, por tanto o que for deletado, não poderá ser recuperado, CUIDADO!**
 ] .panel[.panel-name[Prática]
 .blue[**Agora é sua vez...**]
 * Ainda desde o diretório `~/curso_senai/comandos_basicos/`:
@@ -1120,8 +1069,7 @@ $
 ]
 .panel[.panel-name[Dica!]
 Para usar o uso do comando `rm` mais seguro, sempre use a opção `-i`. Esse
-paramêtro faz com que o comando peça para o usuário que confirme se quer mesmo
-deletar o arquivou e/ou diretório.
+paramêtro faz com que o comando peça para o usuário que confirme se quer mesmo deletar o arquivou e/ou diretório.
 Faça o teste:
 * Crie um arquivo plano, no diretório atual.
 * Delete ele usando a opção `-i`
@@ -1131,22 +1079,12 @@ Faça o teste:
 ---
 ## Caracteres Curingas
 .panelset[ .panel[.panel-name[Asterístico]
-O caracter `*` é muito útil na linha de comando, pois ele representa zero ou
-mais caracteres.
-Por exemplo, no diretório `~/curso_senai/comandos_basicos/` temos os arquivos
-`propanol.txt`, `etanol.txt` e `metanol.txt` e `pentanol.txt`., os quais
-poderiam ser representados assim: `*.txt` (*tudo o que termina em `.txt`*).
-Assim mesmo, os arquivos `propanol.txt` e `pentanol.txt` podem ser representados
-como: `p*.txt` (*tudo o que começa com `p` e termina com `.txt`).
+O caracter `*` é muito útil na linha de comando, pois ele representa zero ou mais caracteres. Por exemplo, no diretório `~/curso_senai/comandos_basicos/` temos os arquivos `propanol.txt`, `etanol.txt` e `metanol.txt` e `pentanol.txt`., os quais poderiam ser representados assim: `*.txt` (*tudo o que termina em `.txt`*). Assim mesmo, os arquivos `propanol.txt` e `pentanol.txt` podem ser representados como: `p*.txt` (*tudo o que começa com `p` e termina com `.txt`).
 ]
 .panel[.panel-name[Interregocação]
-O caracter `?` também é um caracter curinga, mas ele só pode representar um
-único caracter. Por exemplo, `?etanol.txt` (*um caracter seguido de
-`etanol.txt`*) representaria metanol enquanto `*etanol.txt` (*tudo o que termina
-em `etanol.txt`*) representaria `etanol.txt` e `metanol.txt`.
-Podem ser usados vários ao mesmo tempo. Por exemplo `????anol.txt`, o que indica
-quatro caracteres seguidos de `anol.txt`, ou seja, `propanol.txt` e
-`pentanol.txt`.
+O caracter `?` também é um caracter curinga, mas ele só pode representar um único caracter. Por exemplo, `?etanol.txt` (*um caracter seguido de `etanol.txt`*) representaria metanol enquanto `*etanol.txt` (*tudo o que termina em `etanol.txt`*) representaria `etanol.txt` e `metanol.txt`.
+Podem ser usados vários ao mesmo tempo. Por exemplo `????anol.txt`, o que indica quatro caracteres seguidos de `anol.txt`, ou seja, `propanol.txt` e
+`pentanol.txt`. 
 ]
 .panel[.panel-name[Prática]
 Ok, mas na prática para que servem os caracteres curingas?
@@ -1181,12 +1119,7 @@ ethanol.txt metanol.txt
 ---
 class: inverse
 ## Quiz
-Suponha que você está iniciando um novo experimento e quer duplicar a estrutura
-do diretório de experimentos previos para adicionar os novos dados.
-Asuma que seu experimento previo esta em uma pasta chamada `18-09-2023`, que
-contem a pasta `dados`, dentro da qual tem as pastas `brutos` e `processados`. O
-objetivo é copiar a estrutura do diretório `18-09-2023` no diretório
-`20-10-2023` para obter uma estrutura similar a esta:
+Suponha que você está iniciando um novo experimento e quer duplicar a estrutura do diretório de experimentos previos para adicionar os novos dados. Asuma que seu experimento previo esta em uma pasta chamada `18-09-2023`, que contem a pasta `dados`, dentro da qual tem as pastas `brutos` e `processados`. O objetivo é copiar a estrutura do diretório `18-09-2023` no diretório `20-10-2023` para obter uma estrutura similar a esta:
 &lt;img src="03.Images/tree.png" width="45%" style="display: block; margin: auto;" /&gt;
 * Qual dos seguintes conjuntos de comandos poderiam atingir o objetivo?
 
@@ -1227,10 +1160,7 @@ $ mkdir brutos processados
 ```
 ---
 ## Ainda temos muitos comandos para aprender
-Para os seguintes comandos, crie uma pasta chamada `03.Exercicio`, dentro dela,
-coloque os arquivos de texto, chamados `bssA_1.txt` e `bssA_2.txt`. Cada um
-deles contém uma uma sequência do gene *bssA* que codifica para a enzima
-*Benzylsuccinate synthase*.
+Para os seguintes comandos, crie uma pasta chamada `03.Exercicio`, dentro dela, coloque os arquivos de texto, chamados `bssA_1.txt` e `bssA_2.txt`. Cada um deles contém uma uma sequência do gene *bssA* que codifica para a enzima *Benzylsuccinate synthase*.
 * [Sequencia](https://www.ncbi.nlm.nih.gov/nuccore/MW762608.1?report=fasta) do arquivo `bssA_1.txt`
 * [Sequencia](https://www.ncbi.nlm.nih.gov/nuccore/FJ810633.1?report=fasta) do arquivo `bssA_2.txt`
 .orange[Input]
@@ -1241,8 +1171,7 @@ $
 ] ]
 ---
 ## Comandos para visualizuação de arquivos
-.panelset[ .panel[.panel-name[`less`] Este comando permite ler o conteúdo de um
-arquivo de texto que cabe no tamanho da janela. Não lê todo o arquivo.
+.panelset[ .panel[.panel-name[`less`] Este comando permite ler o conteúdo de um arquivo de texto que cabe no tamanho da janela. Não lê todo o arquivo.
 .orange[Input]
 .code-bg-gray[.can-edit[
 ```
@@ -1252,16 +1181,15 @@ $ less bssA_1.txt
 Para sair presione `q`
 ]
 .panel[.panel-name[`more`]
-Este comando permite ler o conteúdo de um arquivo de texto uma página (uma tela)
-por vez. `more` pode ler todo o arquivo. Presionando a tecla Enter, ele vai
-passando linha por linha até o fim do arquivo.
+Este comando permite ler o conteúdo de um arquivo de texto uma página (uma tela) por vez. `more` pode ler todo o arquivo. Presionando a tecla Enter, ele vai passando linha por linha até o fim do arquivo.
 .orange[Input]
 .code-bg-gray[.can-edit[
 ```
 $ less bssA_1.txt
 ```
 ] ]
-Para sair presione `q`. ]
+Para sair presione `q`. 
+]
 .panel[.panel-name[`head`]
 Permite ler as primeiras 10 linhas do arquivo.
 .orange[Input]
@@ -1270,8 +1198,7 @@ Permite ler as primeiras 10 linhas do arquivo.
 $ head bssA_2.txt
 ```
 ] ]
-Se quiser aumentar ou diminuir o número de linhas, coloque o número de linhas
-que deseja como um paramêtro
+Se quiser aumentar ou diminuir o número de linhas, coloque o número de linhas que deseja como um paramêtro
 .orange[Input]
 .code-bg-gray[.can-edit[
 ```
@@ -1334,30 +1261,25 @@ $
 * A opções `-l`, `-m` e `-w` mostram só o número de linhas, caracteres ou palavras, respetivamente.
 ]
 .panel[.panel-name[`cat`]
-O comando `cat` - *Concatenate*, além de ser usado para visualizar arquivos,
-também é usado para manipular arquivos, especificamente para concatenação
-(juntar) de arquivos.
+O comando `cat` - *Concatenate*, além de ser usado para visualizar arquivos, também é usado para manipular arquivos, especificamente para concatenação (juntar) de arquivos.
 .orange[Input] .code-bg-gray[.can-edit[
 ```
 $ cat bssA_1.txt bssA_2.txt &gt; bssA_all.txt
 ```
 ]]
-O caracter `&gt;`, diz paro sistema redirecionar a saída do comando para um
-arquivo, ao invês de printar na tela. **CUIDADO**: Se o arquivo não existe, o
-sistema criará o arquivo, porém se o arquivo já existe, ele será sobrescrito
-silenciosamente, o que levará a uma perda de dados.
+O caracter `&gt;`, diz paro sistema redirecionar a saída do comando para um arquivo, ao invês de printar na tela. **CUIDADO**: Se o arquivo não existe, o sistema criará o arquivo, porém se o arquivo já existe, ele será sobrescrito silenciosamente, o que levará a uma perda de dados.
 * Use os comandos de visualização para dar uma olhada no novo arquivo criado (`bssA_all.txt`)
 ]
 .panel[.panel-name[`grep`]
 O comando `grep` permite procurar padrões dentro de um arquivo. Dado um ou
-vários caracteres para ele procurar, ele imprimirá na tela a linha completa onde
-o padrão foi encontrado.
+vários caracteres para ele procurar, ele imprimirá na tela a linha completa onde o padrão foi encontrado.
 .orange[Input] .code-bg-gray[.can-edit[
 ```
 $ grep 'CGACT' bssA_all.txt
 ```
 ]]
-.green[Output] .code-bg-gray[
+.green[Output] 
+.code-bg-gray[
 ```
 CAGGACGACTGCAACGAATTAACAGATGTGATTCTTGATGCAGCCTACAGCCTGCGGACACAAGAGCACT
 TCCGAGGGCGGCGGTTCGATCTTCCCGGCGAAGCTGCTGGAAATCACCCTCAACGACGGCTACGACTGGT
@@ -1390,8 +1312,8 @@ Compactação de arquivos
 $ gzip *
 ```
 ]]
-Assim, serão compactados todos os arquivos dentro do diretório atual. Use `ls`
-para ver a nova extensão dos arquivos.
+Assim, serão compactados todos os arquivos dentro do diretório atual. Use `ls` para ver a nova extensão dos arquivos.
+
 Para descompactar o comando é:
 .orange[Input] .code-bg-gray[.can-edit[
 ```
@@ -1407,6 +1329,7 @@ $ tar -cvf arquivo.tar meudiretorio/
 ```
 ]]
 Compacta o diretório `meudiretorio/` e o nome do arquivo será `arquivo.tar`
+
 Para descompactar o comando é:
 .yellow[BASH] .code-bg-gray[.can-edit[
 ```
@@ -1422,6 +1345,7 @@ $ zip -r meudiretorio.zip meudiretorio/
 ```
 ]]
 Compacta o diretório `meudiretorio/` em um arquivo chamado `meudiretorio.zip`
+
 Para descompactar o comando é:
 .yellow[BASH] .code-bg-gray[.can-edit[
 ```
@@ -1432,16 +1356,17 @@ $ unzip meudiretorio.zip
 ---
 ## Capturando o *output* dos comandos
 Ao igual que a gente viu com a saida do comando `cat`, isso pode ser feito para tudo o que gera um *output* que é normalmente mostrado na tela.
+
 Por exemplo: (dentro da pastas `~/curso_senai/comandos_basicos/exercicios/`)
 .orange[Input] .code-bg-gray[.can-edit[
 ```
 $ wc -l bss* &gt; linhas.txt
 ```
 ]]
-No arquivo `linhas.txt` ficou salvo a saída desse comando, ou seja do número de
-linhas de todos os arquivos que começam com `bss` dentro de
+No arquivo `linhas.txt` ficou salvo a saída desse comando, ou seja do número de linhas de todos os arquivos que começam com `bss` dentro de
 `~/curso_senai/comandos_basicos/03.Exercicio/`, e o total.
-.orange[Input] .code-bg-gray[.can-edit[
+.orange[Input] 
+.code-bg-gray[.can-edit[
 ```
 $ cat linhas.txt
 ```
@@ -1473,9 +1398,7 @@ $ sort -n linhas.txt &gt; linhas_ordenado.txt
 
 ---
 ## Capturando o *output* dos comandos
-Além do operador `&gt;`, também temos um operado similar `&gt;&gt;`, o qual funciona um
-pouco diferente que o primeiro. Vamos usar o comando `echo` para aprender a
-diferença entre os dois. O `echo` nos permite imprimer texto na tela.
+Além do operador `&gt;`, também temos um operado similar `&gt;&gt;`, o qual funciona um pouco diferente que o primeiro. Vamos usar o comando `echo` para aprender a diferença entre os dois. O `echo` nos permite imprimer texto na tela.
 .orange[Input] .code-bg-gray[.can-edit[
 ```
 $ echo O comando echo printa texto na tela
@@ -1514,16 +1437,12 @@ $ tail -n 2 bacterias.csv &gt;&gt; bacterias_sub.csv
 ```
 ]]
 1. As primeiras três linhas de `bacterias.csv` 
-2. As duas últimas linhas de
-`bacterias.csv` 
+2. As duas últimas linhas de `bacterias.csv` 
 3. As primeiras três e as últimas duas linhas de `bacterias.csv`
 4. A segunda e a terceira linha de `bacterias.css`
 ---
 ## Combinando múltiplos comandos
-Nada nos impede encadear comandos consecutivamente. Por exemplo, enviar a saída
-de `wc` diretamente para `sort`, e em seguida enviar a saída para `head`. Esto
-tira a necessidade de arquivos intermediarios. Para encadear comandos se usa o
-operador `|`, chamado *pipe*.
+Nada nos impede encadear comandos consecutivamente. Por exemplo, enviar a saída de `wc` diretamente para `sort`, e em seguida enviar a saída para `head`. Esto tira a necessidade de arquivos intermediarios. Para encadear comandos se usa o operador `|`, chamado *pipe*.
 .orange[Input] .code-bg-gray[.can-edit[
 ```
 $ wc -l bssA* | sort -n
@@ -1553,8 +1472,7 @@ $ wc -l bssA* | sort -n | head -n 1
 ---
 class: inverse
 ## Quiz
-Suponha que você que encontrar os três arquivos com menor número de linhas. Qual
-comando seria o correcto?
+Suponha que você que encontrar os três arquivos com menor número de linhas. Qual comando seria o correcto?
 1. `wc -l * &gt; sort -n &gt; head -n 3` 
 2. `wc -l * | sort -n | head -n 1-3` 
 3. `wc -l * | head -n 3 | sort -n` 
@@ -1582,12 +1500,8 @@ class: inverse, center, middle
 ## Aumenta a complexidade porém também o poder
 ---
 ## *Loops*
-Os *loops* ou laços são uma construção de programação que nos permite repetir um
-ou vários comandos para cada item de uma lista. Eles são fundamentais para
-melhorias de produtividade através de automação.
-Semelhante aos caracteres curingas e ao uso do tab para autocompletar palavras,
-o uso de *loops* também reduz a quantidade de digitação necessária, reduzindo
-também o número de erros de digitação.
+Os *loops* ou laços são uma construção de programação que nos permite repetir um ou vários comandos para cada item de uma lista. Eles são fundamentais para melhorias de produtividade através de automação.
+Semelhante aos caracteres curingas e ao uso do tab para autocompletar palavras, o uso de *loops* também reduz a quantidade de digitação necessária, reduzindo também o número de erros de digitação.
 ---
 ## *Loops*
 Imagine que tem centenas de arquivos com genomas de bacterias chamados `bacteria_a`, `bacteria_b` e `bacteria_c` (descarregue os arquivos). Para o exemplo só teremos esses três arquivos, mas os principios podem ser aplicados amuitos mais arquivos ao mesmo tempo.
@@ -1654,6 +1568,7 @@ CLASSIFICAÇÃO: Bacillus subtilis
 **No nosso exemplo**
 
 A nossa lista contém três arquivos: `bacteria_a`, `bacteria_b`, `bacteria_c`.
+
 Cada vez que o *loop* itera: 
 1. Usamos `echo` para imprimir o valor atribuido à variável `$arquivo` nessa iteração. Isto não é obrigatório, mas é uma boa prática para ter mais facilidade para acompanhar os resultados. 
 2. É executado o comando `head` no elemento que está sendo iterado (valor de `$arquivo`), extraíndo as duas primeiras linhas do arquivo (*output*) 
@@ -2071,7 +1986,7 @@ Todas etapas do sequenciamento são suceptíveis de ter erros:
 
 --
 
-[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#0-organiza%C3%A7%C3%A3o-dos-dados)
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-i)
 
 ---
 class: center, middle, inverse
@@ -2247,6 +2162,7 @@ Um genoma de 300 Mbp fou montado em 8 contigs. Os tamanhos dos contigs são: 15 
 &gt; 54 Mbp
 
 ---
+
 class: center, middle, inverse
 
 # Tempo para colocar en práctica!
@@ -2264,11 +2180,140 @@ class: center, middle, inverse
 
 &lt;img src="03.Images/workflow.png" width="50%" style="display: block; margin: auto;" /&gt;
 
-[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#2-montagem-de-novo)
-<<<<<<< HEAD
-=======
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-ii)
 
->>>>>>> e55d08db7c7362d5db107eb40b4dc556668ae3f0
+---
+class: inverse, center, middle
+
+# Anotação ou Classificação Taxonômica
+
+---
+
+## Anotação Taxonômica
+
+A classificação taxonômica baseada no genoma completo tem maior poder ressolutivo em comparação ao usar apenas um gene marcador, devido a que são analisados múltiplos genes que refletem de forma mais robusta as relações de parêntesco do organismo de interesse.
+
+A ferramenta mais usado atualmente é [GTDB-tk (*Genome Taxonomic Database*)](https://github.com/Ecogenomics/GTDBTk). Esta base de dados tem mais de 400 mil genomas. 
+
+O *workflow* consiste em três etapas principais:
+
+--
+
+1. `identify`: faz a predição de genes com [Prodigal](), e usa [HMMER]() para identificar 120 genes marcadores de bacterias e 53 en arqueias usados para filogenética. 
+
+--
+
+2. `align`: Fas o alinhamento dos genes marcadores com a base de dados, e concatena tudo.
+
+--
+
+3. `classify`: usa [pplacer]() para a colocar cada genoma dentro da árvore de referencia do GTDB-tk. Classifica baseado na posição dentro da árvore de referencia e/ou calculando o ANI (*average nucleotide identity*) respecto aos genomas de referência.
+
+---
+
+class: center, middle, inverse
+
+# Tempo para colocar en práctica!
+.center[
+![](https://media.giphy.com/media/Wsju5zAb5kcOfxJV9i/giphy.gif)
+]
+---
+
+## Práctica III
+
+**Conteúdo**
+* Anotação taxonômica
+
+&lt;img src="03.Images/workflow.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-iii)
+
+
+---
+class: inverse, center, middle
+
+# Predição de Genes
+
+---
+## Como são encontrados os genes?
+
+Existem programas capazes de identifcar diferentes regiones funcionais dos genomas:
+
+* Regioões codificantes de proteinas (ORFs)
+
+* Regiões não codificantes (UTRs)
+
+* Regiões reguladoras (promotres, enhancer, silencers)
+
+---
+## Estrutura dos genes
+
+**Procariotos** 
+
+&lt;img src="03.Images/gene.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+As ORFs são sequências codificantes que possuem:
+* Codon de inicio
+* Região codificante
+* Codon de terminação
+
+---
+## Predição de genes em procariotos
+
+**Para o inicio**
+
+Os algorítmos estão treinados para reconhecer sinais da região promotora dos genes
+
+* Existem sequências consenso na região -35 e a *TATA box* na região -10 do promotor
+
+* Codon de incio *start codon*
+
+**Para o final**
+
+Os programas podem reconhecer sinais da região terminadora dos genes
+
+* Codon de terminação *stop codon*
+
+---
+## Estrutura dos genes
+
+**Eucariotos**
+
+&lt;img src="03.Images/geneeucarioto.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+## Predição de genes em eucariotos
+
+* **Mucho** más complexo!
+
+* Splicing alternativo
+
+* Os algorítmos estão entrenados para reconhecer sinais dos introns
+
+---
+
+class: center, middle, inverse
+
+# Tempo para colocar em prática!
+.center[
+![](https://media.giphy.com/media/gfO1UMUVlM6i1BmKD2/giphy.gif)
+]
+
+---
+## Prática IV
+
+**Conteúdo**
+
+* Predição de genes: Prodigal
+* Anotação funcional: Diamond (DBs EggNOG, KEGG)
+
+&lt;img src="03.Images/workflow.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-iv)
+
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

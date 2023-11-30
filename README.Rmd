@@ -513,6 +513,9 @@ Verifique que a etapa de trimagem e filtragem foi bem sucedida executando FastQC
 ```
 fastqc 02.DadosLimpos/*.pair.fq -o 01.FastqcRelatorios/
 ```
+---
+
+# Prática II
 
 ## 2. Montagem *de novo*
 
@@ -667,6 +670,10 @@ Explore o arquivo de saída `04.QualidadeMontagem/output.txt` usando o comando `
 
 Para mais detalhes sobre a interpretação do relatório visite este [link.](https://www.biostars.org/p/447744/)
 
+---
+
+# Prática III
+
 ## 3. Anotação taxonômica
 
 ### 3.1 Classificação taxonômica com `GTDB-tk`
@@ -715,7 +722,8 @@ Durante o processamento serão criados vários arquivos de saída, porém o arqu
 
 Explore o arquivo usando *Excel*.
 
-
+---
+# Prática IV
 
 
 
