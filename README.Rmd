@@ -670,7 +670,59 @@ checkm lineage_wf 03.Montagem/ 04.QualidadeMontagem/ -t 3 -x fasta --tab > 04.Qu
 Explore o arquivo de saída `04.QualidadeMontagem/output.txt` usando o comando `less`. Descarregue o relatório no seu computador.
 
 Para mais detalhes sobre a interpretação do relatório visite este [link.](https://www.biostars.org/p/447744/)
-<<<<<<< HEAD
-=======
 
->>>>>>> e55d08db7c7362d5db107eb40b4dc556668ae3f0
+## 3. Anotação taxonômica
+
+### 3.1 Classificação taxonômica com `GTDB-tk`
+
+A classificação taxonômica é o processo para assignar um nome ao(s) genoma(s) de interesse. Basicamente se dá pela comparação com bases de dados. O [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) é uma ferramenta que identifica genes marcadores (120 em bactérias e 53 em arqueias) e os compara com uma base de dados curada e constantemente atualizada.
+
+#### 3.2. Instalação de GTDB-tk com `conda`
+
+Crir um novo ambiente chamado `gtdbtk`. Lembre, senão aparece (base) ou o nome de outro ambiente no inicio da linha de comando, deve ativar o conda com: `source /root/anaconda3/bin/activate`
+
+```
+conda create -n gtdbtk
+```
+
+Confirme com `y`. Quando o ambiente estiver criado, ative ele
+
+```
+conda activate gtdbtk
+```
+
+Instale GTDB-tk com:
+
+```
+conda install -c bioconda gtdb
+```
+
+Confirme com `y `
+
+Para descarregar a base de dados use o seguinte comando:
+```
+download-db.sh
+```
+
+#### 3.3. Execução
+
+**Sintaxe**
+```
+gtdbtk classify_wf --genome_dir <diretorio_com_genomas/> --out_dir <diretorio_de_saida/> -x <fa fasta> --cpus <num_nucleos>
+```
+
+Para assignar a taxonomia ao genoma de trabalho, execute o seguinte comando
+```
+gtdbtk classify_wf --genome_dir 03.Montagem/ --out_dir 05.AnotacaoTaxonomica/ -x fasta --cpus 8
+```
+Durante o processamento serão criados vários arquivos de saída, porém o arquivo `05.AnotacaoTaxonomica/gtdbtk.bac120.summary.tsv` contém todas as informações importantes.
+
+Explore o arquivo usando *Excel*.
+
+
+
+
+
+
+
+
