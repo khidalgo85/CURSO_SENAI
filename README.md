@@ -134,9 +134,7 @@ Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/e
 
 ### [SLIDES](https://khidalgo85.github.io/CURSO_SENAI/#1)
 
-# \<\<\<\<\<\<\< HEAD
-
-## \>\>\>\>\>\>\> e55d08db7c7362d5db107eb40b4dc556668ae3f0
+------------------------------------------------------------------------
 
 # Prática I
 

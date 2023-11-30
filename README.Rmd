@@ -142,10 +142,6 @@ knitr::opts_chunk$set(
 
 ### [SLIDES](https://khidalgo85.github.io/CURSO_SENAI/#1)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e55d08db7c7362d5db107eb40b4dc556668ae3f0
 ---
 
 # Prática I
