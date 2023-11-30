@@ -19,7 +19,7 @@
     <script src="index_files/xaringanExtra-progressBar/progress-bar.js"></script>
     <link href="index_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="index_files/tile-view/tile-view.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xfc66b9e08294c31a89006ba4533acae","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb782c97ec874051b11e5f386ed7575d","expires":1}</script>
     <script src="index_files/himalaya/himalaya.js"></script>
     <script src="index_files/js-cookie/js.cookie.js"></script>
     <link href="index_files/editable/editable.css" rel="stylesheet" />
@@ -2634,6 +2634,361 @@ $ conda list # executado dentro de um ambiente, lista as ferramentas instaladas 
 
 * Durante o processamento de genômica e metagenômica em linha de comando usaremos conda.
 
+---
+class: inverse, center, middle
+.huge[ # 3. Estratégias de Análises Genômicas - *Command Line Interface* (CLI) ]
+
+---
+## Protocolo de sequenciamento Illumina
+
+--
+
+1. Extração de DNA/RNA
+
+--
+
+2. Verificação da qualidade da extração: Pureza e quantidade
+
+--
+
+3. Preparação das bibliotecas: Fragmentação do DNA, ligação dos adaptadores e opcionalmente dos *barcodes*.
+
+--
+
+4. Preparação dos cluster: ligação dos fragmentos na *flowcell*, amplificação em ponte
+
+--
+
+5. Sequenciamento por síntese: nucleotídeos modificados (fluoróforo e bloqueador removível), laser para a detecção da base: .red[A] .green[T] .blue[C] .yellow[G]
+
+--
+6. *Basecalling*: Transformar o sinal de fluorescencia em nucleotídeos .red[A] .green[T] .blue[C] .yellow[G], escritos em um arquivo de texto plano. **O FAMOSO ARQUIVO FASTAQ**
+
+--
+
+... Processamento bioinformático ...
+
+---
+## Workflows
+&lt;img src="03.Images/workflow.png" width="80%" style="display: block; margin: auto;" /&gt;
+---
+### Entendendo o arquivo `.fastq` ou `.fq`
+&lt;img src="03.Images/fastq.png" width="80%" style="display: block; margin: auto;" /&gt;
+* Em sequenciamentos *paired-end*, são dois arquivos, um com as *reads* *forward* e outro com as *reads reverse*.
+
+---
+## Lembrando o que significa *paired-end*
+&lt;img src="03.Images/se_pe.png" width="80%" style="display: block; margin: auto;" /&gt;
+---
+### Entendendo o arquivo `.fastq` ou `.fq`
+&lt;img src="03.Images/fastq2.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+--
+* Cabeçalho
+  * Cada sequência começa com *@*
+  * Informação da máquina de sequenciamento (ID)
+  * Informação da *flowcell* (ID, coordenadas, bloco)
+  * Número do par
+  * Sequencia dos adaptadores
+  
+--
+
+* Sequência
+  * Tamanho em Illumina de até 300 bp
+  
+--
+
+* Símbolo *+*
+  * Nem sempre está. A função é separador de informações
+  
+--
+
+* Qualidade
+
+---
+### Phred Quality Score
+
+* A qualidade das sequências está determinada por la nota o *score Phred (q)*
+
+Segundo a seguinte equação:
+
+`$$q = -10 * log_{10}(P)$$` 
+
+Onde, 
+
+`\(q\)` é a nota *Phred*
+
+e `\(P\)` é a probabilidade que a base esteja errada.
+
+Assim então:
+
+* `\(q = 10\)` é 1 base errada a cada 10 (90%); `\(p = 0.1\)`
+
+* `\(q = 20\)` é 1 base errada a cada 100 (99%); `\(p = 0.01\)`
+
+* `\(q = 30\)` é 1 base errada a cada 1000 (99.9%); `\(p = 0.001\)`
+
+--
+
+**Mínimo aceitável é** `\(q &gt; 20\)`, o **ideal** é `\(q &gt; 30\)`
+
+---
+### Phred Quality Score
+Para facilitar a escrita e leitura da informação de qualidade, é usada a table
+*ASCII*, para transformar os dois dígitos da nota *Phred* em um único caráter,
+para bater com cada base da sequência.
+[ASCII table](https://www.asciitable.com/)
+
+---
+## Como avaliar a qualidade das sequências
+`FASTQC` é uma ferramenta que permite visualizar a informação de qualidade das
+sequências de uma manera gráfica e interativa.
+
+---
+## Trimmagem (Filtragem)
+É o processo de remoção de `reads` com baixa qualidade. É possível filtrar
+sequências baseado no el *score Phred*, remoção de adaptadores, remoção de bases
+ao ínicio ou final das sequências. Também é possível trimar por tamanho, por
+exemplo eliminar todas as `reads` menores de 50 bp.
+Alguns programas:
+* Trimmomatic
+* Trimgalore
+* Fastx tool kit
+
+---
+class: inverse, middle, center
+## Tempo de colocar em prática!
+.center[ ![](https://media.giphy.com/media/MdA16VIoXKKxNE8Stk/giphy.gif) ]
+
+---
+### Prática I
+**Conteúdo**
+* Que é conda?
+* Instalação de programas
+* Importação de sequências
+* Análises de qualidade das sequências
+* Trimmagem
+
+---
+## Workflow
+### Avaliação da qualidade com `fastqc`
+&lt;img src="03.Images/workflow2.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+### Por que é necessário revisar a qualidade das sequências?
+Todas etapas do sequenciamento são suceptíveis de ter erros:
+
+--
+
+* Amplificação por PCR
+
+--
+
+* Adição das bases pela polimerase
+
+--
+
+* *Base-calling*
+
+--
+
+* Taxa de erro da Illumina ~0.1%**
+
+--
+
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#0-organiza%C3%A7%C3%A3o-dos-dados)
+
+---
+class: center, middle, inverse
+
+# Montagem de Genomas
+
+---
+
+.center[## Montagem de Genomas *de Novo*]
+.center[##Sem referência)]
+
+&lt;img src="03.Images/montagem.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+* Como é possível re-armar o jornal a partir dos fragmentos?
+
+---
+## Mas antes de "montar" o genoma
+### Uma consideração importante é a **Cobertura**
+
+A cobertura é quantas vezes em média cada base do genoma foi sequenciada. Pode ser calculado pela seguinte equação:
+
+`$$C = (L*N)/G$$`
+
+Onde:
+`\(L\)` é o tamanho das *reads*,
+`\(N\)` é igual ao número de leituras e
+`\(G\)` é igual ao tamanho aproximado do genoma
+
+**Exemplo**
+Foi sequenciado o genoma de uma bactéria com tamanho aproximado de 2 Mbp. Se obtiveram 3 milhões de *reads* paired end de 100 bp. O cálculo da cobertura para esse genoma é:
+
+`$$C = ((100*2)*3.000.000)/2.000.000$$`
+`$$C = 300x$$`
+
+Entre maior seja a cobertura a qualidade da montagem também será maior. Para Illumina `\(100\)`, PacBio `\(50x\)`
+
+&gt; **Desafio**
+&gt; Considerando que o nosso genoma exemplo tem um tamanho de genoma aproximado de 4.8 Mbp. Qual seria a cobertura do sequenciamento?
+
+---
+
+### Mas, e que é o que significa "montar" um genoma
+
+A partir dos fragmentos (pedacinhos) armar o genoma (página do jornal). Porém sem molde, como sabemos qual é a ordem das peças? 
+
+.center[
+![](https://media.giphy.com/media/XbxxZbRzpcuSn1rbYk/giphy.gif)
+]
+
+---
+
+## A montagem se organiza em:
+
+* Contigs:  Sequências contiguas, formadas pela sobreposição de um conjunto de *reads*
+
+&lt;img src="03.Images/contigs.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+* Scaffolds: União de contigs
+
+&lt;img src="03.Images/scafold.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Algorítmos
+
+Existem diferentes algorítmos para montar genomas, e devem ser usados segundo o tipo de sequências (curtas ou longas).
+
+.center[
+![](https://media.giphy.com/media/3o7527pa7qs9kCG78A/giphy.gif)
+]
+
+---
+## O que é um algorítmo?
+
+Sequência de instruções ou comandos realizados de forma sistemática com a finalidade de resolver um problema ou executar uma determinada tarefa. Ou é um conjunto específico de instruções lógicas para executar uma tarefa ou resolver um problema.
+
+**Exemplo: Algorítmo "Dia a dia pro trabalho"**
+1. Acordar
+2. Tomar banho
+3. Vestir-se
+4. Tomar café
+5. Tirar o carro da garagem
+6. Dirigir até o trabalho
+
+---
+## O que é um algorítmo?
+
+Sequência de instruções ou comandos realizados de forma sistemática com a finalidade de resolver um problema ou executar uma determinada tarefa. Ou é um conjunto específico de instruções lógicas para executar uma tarefa ou resolver um problema.
+
+&lt;img src="03.Images/tarefa-algoritmo.png" width="30%" style="display: block; margin: auto;" /&gt;
+
+---
+## Algorítmos
+
+Existem diferentes algorítmos para montar genomas, e devem ser usados segundo o tipo de sequências (curtas ou longas).
+
+
+* Overlap - Layout - Consensus
+  * PacBio
+  
+&lt;img src="03.Images/olc.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+## Algorítmos
+* Grafo de De Bruijn
+  * Illumina
+
+&lt;img src="03.Images/debruijn.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+## *Short reads* vs *Long reads*
+
+&lt;img src="03.Images/colibri.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+## As repetições são um grande problema!
+
+&lt;img src="03.Images/avion.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+### *Short reads*
+
+&lt;img src="03.Images/avion2.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+### *Long reads*
+
+&lt;img src="03.Images/avion3.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+## Resumindo...
+
+1. Entre menores sejam as peças (*short reads*) mais complicado será o processo de montagem
+2. Peças maiores (*long reads*) facilitam o processo de montagem
+3. Pode ser usado um molde (genoma de referêcia) porém deve ser **muito** próximo.
+4. Um genoma de referência "distante" gera montagens errados
+5. Genomas com alta porcentagem de repetições são mais difíceis de montar.
+
+---
+## Programas para montagem de genomas
+
+
+* Megahit (sequências curtas)
+* Spades (sequências curtas e longas)
+* Canu (sequências longas)
+* Velvet, SOAP, IDBA, etc.
+
+---
+## Como avaliar a qualidade da montagem?
+
+1. Número de contigs 
+2. Tamanho dos contigs
+3. Tamanho do maior contig
+4. N50
+5. Tamanho total da montagem
+6. Completude/ Contaminação
+
+&lt;font size=3&gt; Programa para avaliar a montagem, QUAST (1-5), BUSCO/CheckM (6) &lt;/font&gt;
+
+---
+## N50
+
+50% do total de bp que estão no 50% dos contigs.
+
+**Exemplo**
+
+Um genoma de 300 Mbp fou montado em 8 contigs. Os tamanhos dos contigs são: 15 Mbp, 39 Mbp, 24 Mbp, 3 Mbp, 33 Mbp, 45 Mbp, 117 Mbp e 54 Mbp.
+
+1. Ordene de maior a menor os tamanhos dos contigs
+
+&gt; 117, 54, 45, 39, 33, 24, 15, 3, 3
+
+2. Calcule a metade do genoma
+
+&gt; 150 Mbp
+
+3. Some os contigs até passar de 150 Mbp, o tamanho desse contig é o N50
+&gt; 54 Mbp
+
+---
+class: center, middle, inverse
+
+# Tempo para colocar en práctica!
+.center[
+![](https://media.giphy.com/media/Wsju5zAb5kcOfxJV9i/giphy.gif)
+]
+---
+
+## Práctica II
+
+**Conteúdo**
+* Montagem do genoma com Spades
+* Avaliação da qualidade da montagem com Quast e CheckM
+
+
+&lt;img src="03.Images/workflow.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#2-montagem-de-novo)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
