@@ -666,7 +666,7 @@ Execute a ánalise para a montagem completa e filtrada com o seguinte comando:
 checkm lineage_wf 03.Montagem/ 04.QualidadeMontagem/ -t 3 -x fasta --tab > 04.QualidadeMontagem/output.txt
 ```
 
-Explore o arquivo de saída `04.QualidadeMontagem/output.txt` usando o comando `less`. Descarregue o relatório no seu computador.
+Explore o arquivo de saída `04.QualidadeMontagem/output.txt` usando o comando `less`, ou use *Excel*.
 
 Para mais detalhes sobre a interpretação do relatório visite este [link.](https://www.biostars.org/p/447744/)
 
@@ -680,7 +680,7 @@ Para mais detalhes sobre a interpretação do relatório visite este [link.](htt
 
 A classificação taxonômica é o processo para assignar um nome ao(s) genoma(s) de interesse. Basicamente se dá pela comparação com bases de dados. O [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) é uma ferramenta que identifica genes marcadores (120 em bactérias e 53 em arqueias) e os compara com uma base de dados curada e constantemente atualizada.
 
-#### 3.2. Instalação de GTDB-tk com `conda`
+#### 3.1.1. Instalação de GTDB-tk com `conda`
 
 Crir um novo ambiente chamado `gtdbtk`. Lembre, senão aparece (base) ou o nome de outro ambiente no inicio da linha de comando, deve ativar o conda com: `source /root/anaconda3/bin/activate`
 
@@ -707,7 +707,7 @@ Para descarregar a base de dados use o seguinte comando:
 download-db.sh
 ```
 
-#### 3.3. Execução
+#### 3.1.2. Execução
 
 **Sintaxe**
 ```
@@ -725,8 +725,219 @@ Explore o arquivo usando *Excel*.
 ---
 # Prática IV
 
+## 4. Anotação Funcional
+
+### 4.1. Predição de ORFs com `prodigal`
+
+#### 4.1.1. Instalação de Prodigal com `conda`
+
+Para a instalação de Prodigal, crie um ambiente de conda chamado `anotacao` onde serão instaladas todas as ferramentas relacionadas com a anotação taxonômica. 
+
+Crie o ambiente com o seguinte comando:
+```
+conda create -n anotacao
+```
+
+Ative o ambiente
+```
+conda activate anotacao
+```
+
+Instale `prodigal`
+```
+conda install -c bioconda prodigal
+```
+
+#### 4.1.2. Execução
+
+O objetivo desta etapa é procurar as ORFs dentro dos contig/scaffols. Ou seja, predizer onde iniciam e terminam os genes. Basicamente o programa procura por codons de inicio e de parada. Para este objetivo será usada a ferramenta [Prodigal](https://github.com/hyattpd/prodigal/wiki).
+
+Verifique que o conda e o ambiente `anotacao` esteja ativo. Senão use os comandos de ativação
+
+**Sintaxe**
+```
+prodigal -i <montagem.fasta> -o <saida_arquivo_gbk> -a <saida_arquivo_seqs_proteinas> -d <saida_arquivo_seqs_nucleotideos> -s <saida_arquivos_coordenadas>
+```
+
+Para rodar o program utilize o seguinte comando:
+```
+prodigal -i 03.Montagem/genoma_scaffolds_filtrado.fasta -f gff -o 06.PredicaoGenes/genoma_filtered.gff -a 06.PredicaoGenes/genoma_filtered.faa -d 06.PredicaoGenes/genoma_filtered.fa
+```
+
+O arquivo `06.PredicaoGenes/genoma_filtered.gff` está escrito em formato `gff` (*gene Feature Format*). Adicionalmente, o programa gerá arquivos com as sequências nucleotídicas (`06.PredicaoGenes/genoma_filtered.fa`) e proteícas (`06.PredicaoGenes/genoma_filtered.faa`) de cada gene predito.
+
+**Formato `.gff` (Gene Feature Format)**
+
+Este formato guarda as informações dos genes preditos pelo Prodigal. Explore-o (`less genoma_filtered.gff`).
+
+Cada sequência comença com um *header* com as informações da sequência analizada, seguido de uma tabela separada por tabulações com informações dos genes encontrados em dita sequência.
+
+O *header* contém os seguentes campos:
+
+* **seqnum**: O número da sequência, começando pelo número 1.
+* **seqlen**: tamanho em bases da sequência
+* **seqhdr**: título completo da sequência extraído do arquivo `.fasta`.
+* **version**: versão do Prodigal usado
+* **run_type**: modo de corrida, p.e. m*metagenomic*
+* **model**: informação sob o arquivo de treinamento usado para a predição.
+* **gc_cont**: % de GC na sequência
+* **transl_table**: Tabela do código genético usada para analizar a sequência. Para bactérias e archaeas é usada a [tabela 11](https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi#SG11).
+* **uses_sd**: 1 se o Prodigal usa o *[RBS](https://parts.igem.org/Ribosome_Binding_Sites) finder*, ou 0 se usa outros *motifs*. 
+
+Depois do *header* se encontra uma tabela com as informações dos genes encontrados:
+
+* **seqname**: nome da sequência, neste caso nome do scaffold/contig.
+* **source**: nome do programa que gerou a predição
+* **feature**: tipo de *feature*, p.e. CDS (*Coding DNA Sequence*)
+* **start**: primeira posição da *feature*
+* **end**: útlima posição da *feature*
+* **score**: Valor numerico que geralmente indica a confiança do programa na predição da ORF.
+* **strand**: fita do DNA que foi encontrado a *feature*. A fita *forward* é definida como '+', e a *reverse* como '-'.
+* **frame**: 0 indica que a primeira base da *feature* é a primeira base do códon de inicio, 1, que a segunda base da *feature* é a primeira base do códon de inicio.
+* **atribute**: información adicional sobre la *feature*, parada por ponto e vìrgula ";".  
+
+Uma vez terminado o processo, pode explorar os diferentes arquivos de saída para conhecer a fondo a estrutura de cada um deles e as informações que cada um tem.
+
+### 4.2. Atribuição Funcional das ORFs
+
+Nesta etapa as ORFs preditas serão funcionalmente anotadas por homologia, usando bases de dados e um alinhador. Poderão ser usadas as sequências nucleotídicas ou proteícas.
+
+Para o alinhamento será usado o programa [Diamond](https://github.com/bbuchfink/diamond/wiki/3.-Command-line-options), e uma base de dados acurada como [KEGG](https://www.genome.jp/kegg/).
+
+#### 4.2.1. Instalação de Diamond com `conda`
+
+O [**Diamond**](https://github.com/bbuchfink/diamond) será usado para a anotação funcional. Instale através do conda, no ambiente `anotacao`
+
+```
+conda activate Annotation
+```
+Instale o Diamond
+```
+conda install -c bioconda diamond
+```
+
+#### 4.2.2. Obtenção das Bases de Dados
+
+Para a obtenção das bases de dados, pode ir nos sites e descarregar diretamente. No entanto, tenha em conta que a base de dados **KEGG** é paga. Se você descarregar direto da fonte, deverá formatar as DBs para o seu uso com Diamond (anotação funcional). Isto é feito com o comando
+
+`makedb --in reference.fasta -d reference`
+
+Para facilitar, no seguinte link, você encontrará as bases de dados **KEGG**, **EggNOG**, previamente formatadas para o uso em Diamond.
+
+Use o programa `gdown` para descarregar as dbs que se encontram em um GoogleDrive. Se não tiver o `gdown` instalado, siga o seguintes passos: 
+
+* [**Dbs**](https://drive.google.com/drive/folders/1GLP6vA4Gs0cce-nnBXCmZSgmONWybOSF?usp=sharing)
+
+```
+## Se não tiver instalado pip
+sudo apt update
+sudo apt install python3-pip
+pip3 --verision
+
+## Instale gdown
+pip install gdown
+```
+
+Crie uma pasta, chamada `dbs/`, e use o programa `gdown` para descarregar as dbs. 
+
+```
+mkdir dbs/
+```
+
+Descarregue as DBs
+
+**KEGG**
+```
+gdown --id 1ZxjJdwh1izP32X5CH-B8SN0DK2WAAAvr
+```
+
+**EggNOG**
+```
+gdown --id 1x2Kp4PTX8GFFhkJm6EVDQLfi-xRSQ735
+```
+
+Serão descarregados os seguintes arquivos:
+
+* `eggnog.dmnd`: Base de dados EggNOG formatada para Diammond
+* `keggdb.dmnd`: Base de dados KEGG formatada para Diammond
+
+**Nota** É recomendável procurar os links originais para descarga das bases de dados para assim obter a versão mais atualizada.
+
+Se você quiser criar sua própria base de dados, pode procurar as sequências de interesse por exemplo no NCBI, descarregar elas e criar a base de dados formantando para uso com Diamond. 
+
+Como exemplo, vamos usar sequências de genes de degradação aeróbica de hidrocarbonetos já organizadas em um repositório de GitHub chamdado [HADEG](https://github.com/jarojasva/HADEG/tree/main).
+
+Usando o comando `git clone` podemos descarregar o conteúdo total do repositório nas nossas máquinas:
+```
+git clone https://github.com/jarojasva/HADEG.git
+```
+
+Digite `ls`, observará a pasta descarragada `HADEG`, explore ela. Dentro, encontram-se as pastas `Seq_amino_acids` e `Seq_nucleotides`, que correspondem as sequências de aminoacidos e nucleotídeos de genes de degradação aeróbica de hidrocarbonetos. Dentro de cada pasta estão organizadas em diferentes diretórios dependendo das moléculas nas quais esses genes atuam (p.e. alcanos, Aromaticos), e também genes de produção de Biosurfactantes e polímeros.
+
+Você pode gerar uma base de dados para cada tipo de genes ou uma base só para todos os genes desse repositório.
+
+Para criar uma base de dados total, primeiro devem ser concatenadas todas as sequências, usando o comando `cat`.
+
+Entre na pasta `HADEG/Seq_nucleotides`
+```
+cd HADEG/Seq_nucleotides
+```
+Concatene as sequências
+```
+cat Alkanes/* Alkenes/* Aromatics/* Biosurfactants/* Polymers/* > HADEG.fasta
+```
+Use o comando de `diamond` para formatar a DB
+`diamond makedb --in HADEG.fasta -d ../../dbs/hadeg.dmnd`
 
 
+#### 4.2.3. Execução
 
+Uma vez instaladas todas as ferramentas e descarregadas as bases de dados, pode proceder à anotação. Neste caso será feita usando Diammond e as bases de dados **KEGG**, **EggNOG** e **HADEG**.
+
+**SINTAXE**
+
+```
+diamond blastx --threads -k -f --id --query-cover -d dbs/db.dmnd --query genes.fa -o saida_anotacao.txt --tmpdir /dev/shm
+```
+
+* `blastx`: Alinha sequências de DNA contra uma base de dados de proteínas
+Clique [aqui](https://github.com/bbuchfink/diamond/wiki/3.-Command-line-options) para mais detalhes
+* `--threads`: número de núcleos
+* `-k/--max-target-seqs`: Número máximo de sequências *target* por *query* para reportar alinheamentos.
+* `-f/--outfmt`: Formato de saída. São aceptos os seguintes valores:
+  * `0` Formato BLAST *pairwise*
+  * `5` fomato BLAST XML
+  * `6` Formato do BLAST tabular (default), pode customizar as colunas com uma lista separada por espaços, das seguintes opções:
+    * `qseqid` id da sequência *query*
+    * `qlen` tamanho da sequência *query* 
+    * `sseqid` id da sequência da base de dados
+    * `sallseqid` todas os id das sequências das bases de dados
+    * `slen` tamanho da sequência da base de dados
+    * `qstart` inicio do alinhamento no *query*
+    * `qend` fim do alinhamento no *query*
+    * `sstart` inicio do alinhamento na sequência da base de dados
+    * `send` fim do alinhamento na sequência da base de dados
+    * `evalue` 
+    * `bitscore` 
+    * `score` 
+    * `length` tamanho do alinhamento
+    * `pident` porcentagem de matches identicos
+    
+Execute Diamond com *KEGG* para o genes achados no genoma 
+```
+diamond blastx --threads 8 -k 1 -f 6 qseqid qlen sseqid sallseqid slen qstart qend sstart send evalue bitscore score length pident qcovhsp --id 60 --query-cover 60 -d dbs/keggdb.dmnd --query 06.PredicaoGenes/genoma_filtered.fa -o 07.AnotacaoFuncional/genoma_kegg.txt --tmpdir /dev/shm
+```
+
+Execute o comando com *EggNOG*
+```
+diamond blastx --threads 8 -k 1 -f 6 qseqid qlen sseqid sallseqid slen qstart qend sstart send evalue bitscore score length pident qcovhsp --id 60 --query-cover 60 -d dbs/eggnog.dmnd --query 06.PredicaoGenes/genoma_filtered.fa -o 07.AnotacaoFuncional/genoma_eggnog.txt --tmpdir /dev/shm
+```
+
+Execute o comando com *HADEG*
+```
+diamond blastx --threads 8 -k 1 -f 6 qseqid qlen sseqid sallseqid slen qstart qend sstart send evalue bitscore score length pident qcovhsp --id 60 --query-cover 60 -d dbs/hadeg.dmnd --query 06.PredicaoGenes/genoma_filtered.fa -o 07.AnotacaoFuncional/genoma_hadeg.txt --tmpdir /dev/shm
+```
+
+Explore os arquivos de saída `genoma_kegg.txt`, `genoma_eggnog.txt` e `genoma_hadeg.txt` com os comandos básicos e com *Excel*.
 
 
