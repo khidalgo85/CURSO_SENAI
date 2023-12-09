@@ -723,6 +723,7 @@ Durante o processamento serão criados vários arquivos de saída, porém o arqu
 Explore o arquivo usando *Excel*.
 
 ---
+
 # Prática IV
 
 ## 4. Anotação Funcional
@@ -809,7 +810,7 @@ Para o alinhamento será usado o programa [Diamond](https://github.com/bbuchfink
 O [**Diamond**](https://github.com/bbuchfink/diamond) será usado para a anotação funcional. Instale através do conda, no ambiente `anotacao`
 
 ```
-conda activate Annotation
+conda activate anotacao
 ```
 Instale o Diamond
 ```
@@ -938,6 +939,240 @@ Execute o comando com *HADEG*
 diamond blastx --threads 8 -k 1 -f 6 qseqid qlen sseqid sallseqid slen qstart qend sstart send evalue bitscore score length pident qcovhsp --id 60 --query-cover 60 -d dbs/hadeg.dmnd --query 06.PredicaoGenes/genoma_filtered.fa -o 07.AnotacaoFuncional/genoma_hadeg.txt --tmpdir /dev/shm
 ```
 
-Explore os arquivos de saída `genoma_kegg.txt`, `genoma_eggnog.txt` e `genoma_hadeg.txt` com os comandos básicos e com *Excel*.
+O arquivo de output é uma tabela que contém os códigos dos genes e as anotações (número KEGG), além de outras informações relacionadas ao alinhamento de cada sequência (i.e. cobertura, % de identidade). 
 
+A coluna três tem as informações do número KEGG (p.e. K00001) e o código da sequência no NCBI (p.e. WP_014068995.1, separadas por um *pipe* `|`.
+
+Para separar essa coluna, use o seguinte comando:
+
+* Para KEGG
+```
+perl -pe 's/\|?(?:\s+gi|ref)?\|\s*/\t/g' 07.AnotacaoFuncional/genoma_kegg.txt > 07.AnotacaoFuncional/genoma_kegg_formatado.tsv
+```
+
+* Para EggNOG
+```
+perl -pe 's/\|?(?:\s+gi|ref)?\|\s*/\t/g' 07.AnotacaoFuncional/genoma_eggnog.txt > 07.AnotacaoFuncional/genoma_eggnog_formatado.tsv
+```
+
+Descarregue e explore em excel as tabela finais de anotações.
+
+---
+
+# Genômica com plataformas online
+
+Existem diversas plataformas online nas quais podem ser realizadas diversas análises bioinformáticas. As mais conhecidas são [KBase](https://www.kbase.us/) e [Galaxy](https://usegalaxy.org/). Neste tutorial será usado o KBase, além da plataforma de montagem e anotação do [NCBI](https://www.ncbi.nlm.nih.gov/genome/annotation_prok/).
+
+## 0. Organização de Dados
+
+### 0.1. Criando uma conta no KBase
+
+Ingresse no link para criar uma conta: [singup!](https://narrative.kbase.us/#signup)
+
+[Neste link](https://docs.kbase.us/getting-started/narrative) você pode visitar o extenso manual/tutorial da plataforma.
+
+<img src="imgs/kbase1.png" align="center"/>
+
+Para facilitar acesse através de uma conta Google
+
+<img src="imgs/kbase2.png" align="center"/>
+
+No KBase, você pode crias fluxos de trabalho compartilháveis e reproduzíveis chamados **Narrativas** que incluem dados, etapas de análise, resultados, visualizações e comentários. 
+
+### 0.2. Upload dos dados
+
+O primeiro passo é criar uma nova narrativa clicando em *+ New Narrative*. Uma vez criada a nova narrativa, troque o nome dela para Genômica, clicando no título acima a esquerda *Untitled*
+
+<img src="imgs/kbase3.png" align="center"/>
+
+Na seção **DATA**, clique em *Add Data* e será aberta uma aba para carregar os dados. Clique em *Import* para importar os aquivos desde uma pasta no seu computador. Selecione os arquivos `genoma_R1.fq` e `genoma_R2.fq`. Pode selecionar os dois ao mesmo tempo.
+
+Após subidos os arquivos na plataforma, eles devem ser importadas para dentro da narrativa, para isto é necessário selecionar o tipo de dados. Para o caso das sequências deste tutorial, trata-se do formato *FASTQ Reads Noninterleaved*, clique em *Import selected*. 
+
+<img src="imgs/kbase4.png" align="center"/>
+
+Automaticamente será aberta a primeira ferramenta a ser usada  *Import from Staging Area*. Preencha os campos conforme a foto e clique em *Run*.
+
+<img src="imgs/kbase5.png" align="center"/>
+
+
+A ferramenta primeiro fará a leitura dos arquivos e depois irá juntar eles num objeto só (*genoma*) e ficaram disponíveis dentro da narrativa na aba a esquerda *DATA*. As ferramentas a serem usadas podem ser procuradas na aba *APPS* a esquerda, na opção de busca.
+
+<img src="imgs/kbase6.png" align="center"/>
+
+## 1. Controle de Qualidade
+
+### 1.1. Checagem da qualidade
+
+Nesta etapa será acessada à qualidade das sequências usando a ferramenta [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). Procure no catálogo e clique no nome (*Assess Read Quality with FastQC - v0.12.1*). Imediatamente será inserida na narrativa logo após a ferramenta de importação.
+
+Selecione o objeto *genoma* no input (*Read Library/RNA-seq Sample Set*) e clique em *Run*
+
+<img src="imgs/kbase7.png" align="center"/>
+
+As análises no KBase podem demorar um pouco mais do normal de um servidor, devido que se trata de un servidor público usado por muitas pessoas ao mesmo tempo.
+
+Uma vez a análise seja concluida, você terá acesso aos resultados na aba *Results*. Na seção *Report* serão disponibilizados os relatórios FastQC. Se você quiser descarregá-los na seção *Files* se encontram os arquivos para cada pair. 
+
+<img src="imgs/kbase8.png" align="center"/>
+
+### 1.2. Trimagem e filtragem de sequências
+
+A remoção de sequências e bases de baixa qualidade deve ser feita baseada nos relatórios da checagem da qualidade. O programa [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic), através de diversos argumentos realiza a filtragem e trimagem das sequências. Procure pela ferramenta na barra de busca e adicione ela (*Trim Reads with Trimmomatic - v0.36*) na narrativa.
+
+No input, selecione o objeto *genoma*. Clique em *show advanced* para modificar os argumentos de corte e filtragem. Segundo os resultados obtidos no relatório de qualidade, insira os parâmetros como apresentado na imagem:
+
+<img src="imgs/kbase9.png" align="center"/>
+
+A análise terá terminado quando mostrar a palavra *Sucess*. Explore os resultados clicando na aba *Results*
+
+<img src="imgs/kbase10.png" align="center"/>
+
+Perceba que na seção *DATA*, agora devem aparecer novos objetos criados após a trimagem. Esses novos elementos são as sequências limpas pareadas (*dadoslimpos_paired*), e as sequências não pareadas forward (*dadoslimpos_unpaired_fwd*) and reverse (*dadoslimpos_unpaired_rev*).
+
+Após a limpeza das sequências é recomendável repetir a análise com Fastqc para ver a qualidade das sequências filtradas pareadas (*dadoslimpos_paired*). 
+
+## 2. Montagem *de novo*
+
+### 2.1. Spades
+
+Uma montagem é o processo de alinhamento de sequências curtas com o objetivo de recuperar uma sequência maior. No caso da montagem *de novo* são usados algorítmos baseados em *k-mers*, que são subsequências com tamanho definido pelo usuário (i.e. 21-mers).
+
+Procure o montador [Spades](https://github.com/ablab/spades) na barra de busca na seção *APPS* e coloque ele dentro da narrativa (*Assemble Reads with SPAdes - v3.15.3*) para ter acesso as funções dele.
+
+Em *Read library* clique no *+* e adicione o objeto *dadoslimpos_paired*.
+
+Clique em *show advance* para modificar os parâmetros da montagem:
+
+<img src="imgs/kbase11.png" align="center"/>
+
+Ao rodar Spades dentro do KBase, uma vez terminada a montagem, automaticamente será rodado o program [Quast](http://quast.sourceforge.net/) para analisar a qualidade. Você pode ter acesso ao relatório de saída do Quast na aba *Results*. 
+<img src="imgs/kbase12.png" align="center"/>
+
+Descarregue o relatório na seção *Links*, clicando no link *QUAST report* onde poderá explorar todas as métricas de qualidade. 
+
+A montagem (*montagem_spades*) deve aparecer na aba *DATA*.
+
+### 2.3. Avaliação da montagem
+
+Contigs com tamanho menor de 600 bp não tem um valor representativo na montagem, é recomendável filtrar essas sequências. Dentro do KBase existe uma ferramenta chamada *Filter Assembled Contigs by Length* que pode ser usada para este objetivo.
+
+<img src="imgs/kbase13.png" align="center"/>
+
+Será criado o novo objeto, chamado *montagem_filtrada*
+
+<img src="imgs/kbase14.png" align="center"/>
+
+Se você filtrou a montagem, daqui para frente você tem duas montagens. Nos passos seguintes avalie as duas montagens para ter certeza que a filtragem não impactou na qualidade da completude e da anotação de genes. 
+
+Para avaliar a completude e a contaminação da montagem é usada a ferramenta [CheckM](https://github.com/Ecogenomics/CheckM/wiki). A qual usa uma base de dados própria de genes ortologos de cópia única. 
+
+> **Dica:** Se tiver mais de uma montagem, você pode criar um *AssemblySet* para colocar todos dentro de um objeto só, e assim facilitar as análises, podendo fazer vários elementos ao mesmo tempo. Basta procurar na barra de buscas de *APPS* *Build AssemblySet*. Crie um objeto com as duas montagens, chamado *montagens*.
+
+Procure o CheckM no catálogo de ferramentas e coloque ele dentro da narrativa (*Assess Genome Quality with Checkm -v1.0.18*). Em *Input Objects* adicione o *AssemblySet* (*montagens*). Nas opções avançadas, selecione *full tree* no *Reference Tree* parameter, e *save* no *Save All Plots*. Uma vez finalizada a análise, na aba *Results*, encontrará um gráfico apresentando o resultado. Clicando no link *CheckM Table*, poderá obter as informações de Completude e Contamination, além da linagem marcadara usada para a análise. 
+
+
+<img src="imgs/kbase15.png" align="center"/>
+
+
+<img src="imgs/kbase16.png" align="center"/>
+
+
+Na seção *Files*, se encontram os arquivos de saída gerados para serem descarregados.
+
+## 3. Anotação Taxonômica
+
+A classificação baseada em dados de genoma tem maior poder ressolutivo em comparação ao usar apenas um gene marcado, desde que esta abordagem analisa múltiplos genes que refletem de forma mais robusta a relações de parêntesco do organismo de interesse. O [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/index.html) é uma ferramenta que identifica 120 genes marcadores e os compara com uma base de dados curada e constamente atualizada. 
+
+Coloque a ferramenta GTDB-Tk dentro da narrativa (*Classify Microbes with GTDB-tk - v2.3.2*). Em *input* coloque o *AssemblySet* (*montagens*) e coloque as opções segundo a imagem:
+
+<img src="imgs/kbase17.png" align="center"/>
+
+Na aba *Results* encontrará a árvore filogenética e uma tabela com a classificação taxonômica.
+
+<img src="imgs/kbase18.png" align="center"/>
+
+<img src="imgs/kbase19.png" align="center"/>
+
+## 4. Anotação Funcional
+
+Dentro do KBase tem várias opções para fazer a assignação funcional, tais como RASTtk e Prokka. O dois farão primeiro a predição das ORFs e depois a anotação. 
+
+### 4.1. RASTtk
+
+Procure no catálogo e escolha *Annotate Genome/Assembly with RASTtk - v1.073* e insira na narrativa.
+
+<img src="imgs/kbase20.png" align="center"/>
+
+O resultado pode ser acessado na aba *Results*. Alí encontrará 
+varias seções. 
+
+<img src="imgs/kbase21.png" align="center"/>
+
+Em *Objects* estará o novo objeto criado *analisis_funcional*, clicando nele abrirá na narrativa uma tabela interativa onde pode explorar e procurar genes, além de uma aba para explorar os contigs. 
+
+<img src="imgs/kbase22.png" align="center"/>
+
+Na seção *Report* tem também uma tabela interativa menos detalhada com os genes anotados. *Summary* apresenta um resumo da análise, com números de genes encontrados, no codificantes, etc. 
+
+### 4.2. Prokka
+
+A anotação funcional também pode ser feita usando o programa [Prokka]
+(https://github.com/tseemann/prokka). Procure na aba *APPS* e insira a ferramenta na narrativa (*Annotate Assembly and Re-annotate Genomes with Prokka - v1.14.5*)
+
+<img src="imgs/kbase23.png" align="center"/>
+
+Os resultados podem ser visualizados numa tabela interativa na seção *Output from Annotate Assembly and Re-annotate Genomes with Prokka - v1.14.5*.
+
+<img src="imgs/kbase24.png" align="center"/>
+
+### 4.3. [eggNOG Mapper](http://eggnog-mapper.embl.de/)
+
+Esta ferramenta permite realizar a anotação funcional de sequências genômicas ou de um conjunto de genes preditos em formato fasta. Nas opções avançadas, a plataforma permite alterar vários parâmetros como o tipo de base de dados, o alinhador, a cobertura e o porcentagem de identidade, etc. Ao submeter a montagem, deve-se preencher o campo *Email address* para receber uma mensagem com um link que inicia o processo. 
+
+Faça *download* do objeto *montagem_filtrada* desde o KBase, na aba *DATA*, clique nos três pontinhos do lado do nome do objeto. Vai abrir informações sobre o objeto, como conetudo de GC, a anotação taxonômica com GTDB, númeor de contigs, etc. E tem varios botões, entre eles o de descarga, escolha exportar como **FASTA**. 
+
+<img src="imgs/kbase25.png" align="center"/>
+
+Será descarregado no seu computador um arquivo `.zip`. Faça a descompressão, e use o arquivo `montagem_filtrada.fa`, na plataforma de [eggNOG mapper](http://eggnog-mapper.embl.de/)
+
+<img src="imgs/eggnog1.png" align="center"/>
+
+Quando o processo acabar, você pode explorar as anotações na parte inferior do site. A busca pode ser feita baseado em nome ou código do gene. Alternativamente, pode descarregar a tabela de anotações em diferentes formatos (csv, excel, gff, etc)
+
+<img src="imgs/eggnog2.png" align="center"/>
+
+## 5. RAPT
+
+Os desenvolvedores do NCBI criaram a plataforma automatizada [**RAPT**](https://ncbiinsights.ncbi.nlm.nih.gov/2021/05/12/assemble-annotate-prokaryotic-genomes-webrapt/) de montagem e anotação funcional. O montador é a ferramenta [Skesa](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1540-z). A anotação funcional segue o pipeline [PGAP](https://www.ncbi.nlm.nih.gov/genome/annotation_prok/), o qual usa como base de dados RefSeq proteins.
+
+<img src="imgs/RAPT_pipeline.png" align="center"/>
+
+Para realizar a montagem se deve submeter os arquivos R1 e R2 filtrados por qualidade, obtidos do KBase. Na aba *DATA* procure o objeto *dadoslimpos_paired* e faço o *download* em formato **FASTQ**. Un arquivo `.zip` será descarrega, dentro dele procure o arquivo `.fastq`, que será o necessário para o **RAPT**
+
+
+Acesse à plataform [aqui](https://www.ncbi.nlm.nih.gov/rapt?utm_source=blog&utm_medium=referral&utm_campaign=rapt&utm_term=web&utm_content=20210512link1). Lembre-se que deve se cadastrar com uma conta do NCBI.
+
+<img src="imgs/RAPT_submit.png" align="center"/>
+
+O processo demorará aproximadamente 2 horas e os resultados ficaram disponíveis na nuvem durante 6 semanas.
+
+<img src="imgs/RAPT_work_done.png" align="center"/>
+
+Clique no icone de descarregar.Este arquivo inclui:
+
+* **skesa_out.fa**: montagem em formato fasta
+* **assembly_stat_report.tsv**: relatório da qualidade da montagem (número de contigs, N50, etc)
+* **ani-tax-report.txt**: relatório de identificação baseado em ANI.
+* **annot.***: Anotação funcional dos genes preditos em diferentes formatos.
+
+## Outras plataformas
+
+* [PATRIC](https://www.bv-brc.org/) / [Tutorial](https://www.bv-brc.org/docs/tutorial/index.html)
+* [Galaxy](https://usegalaxy.org/) / [Tutorial](https://usegalaxy.org/welcome/new)
+* [BlastKOALA](https://www.kegg.jp/blastkoala/) / [Tutorial](https://www.kegg.jp/blastkoala/help_blastkoala.html)
+
+> **Nota**:
+>
+> Imprevistos ou periodos de manutenção podem interromper a disponibilidade das ferramentas online. De tal forma que estar familiarizado com a linha de comando deve ser uma prioridade para o usuário. 
 
