@@ -2458,6 +2458,119 @@ knitr::include_graphics("03.Images/workflow.png")
 
 [**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-iv)
 
+---
+class: inverse, center, middle
+
+# Microbiomicas
+
+---
+
+## Estudos dos microbiomas
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/microbioma.png")
+```
+
+---
+## Metagenômica
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/metagenomica.png")
+```
+
+---
+
+## Montagem de metagenomas
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/metagenoma.png")
+```
+---
+
+## Workflow: Metagenômica (Linha de comando)
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "90%"}
+knitr::include_graphics("03.Images/workflow_metagenomica_cli.png")
+```
+
+---
+
+class: center, middle, inverse
+
+# Recuperação de Genomas apartir de Metagenomas
+
+---
+
+## Binning
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "70%"}
+knitr::include_graphics("03.Images/binning.png")
+```
+
+---
+class: hide_logo
+
+## Algorítmos
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "70%"}
+knitr::include_graphics("03.Images/binning2.png")
+```
+
+---
+
+## Ferramentas
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "140%"}
+knitr::include_graphics("03.Images/binning3.png")
+```
+
+---
+class: center, middle, inverse
+
+# Tiempo para colocar en práctica!
+.center[
+![](https://media.giphy.com/media/KfwyWfTwMu1FG0XhO8/giphy.gif)
+]
+
+---
+
+## Prática
+
+**Conteúdo**
+
+* Metagenômica (Gene Centric)
+  * Controle de Qualidade
+  * Montagem
+  * Anotação Funcional e Taxonômica
+  * Mapeamento (Quantificação)
+  
+* Metagenômica (Genome centric - Binning)
+  * Co-assembly
+  * Binning
+  * De-replicación
+  * Control de calidad
+  * Anotación Funcional e Taxonómica
 
 
+[Prática]()
+
+---
+
+## Workflow: Metagenômica (Plataforma online)
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
+knitr::include_graphics("03.Images/workflow_metagenomica_cli.png")
+```
+
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-iv)
+
+---
+class: center, middle, inverse
+
+# Tempo para colocar em prática!
+.center[
+![](https://media.giphy.com/media/KfwyWfTwMu1FG0XhO8/giphy.gif)
+]
+
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-iv)
 
