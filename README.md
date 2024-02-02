@@ -1856,30 +1856,9 @@ seguinte script do R, grafique as curvas de saturação.
 **Nota:** todos os arquivos descarregados devem estar dentro de uma
 pasta só, p.e. `03.NonPareil`.
 
-Use o seguinte script de R para construir as curvas
-
-``` r
-install.packages("Nonpareil") #para instalar o pacote
-library(Nonpareil) # ativa o pacote
-
-# Use a pasta metagenomica como diretório de trablaho. Nna aba files, 
-# procure o diretório, clique na setinha do lado do icone de engrenagem, e 
-# clique em "Set as Working Directory"
-
-Samples <- read.table('03.NonPareil/Samples.txt', sep='\t', header=TRUE, as.is=TRUE); 
-#lê o arquivo Samples.txt com a informação das amostras
-
-attach(Samples);
-nps <- Nonpareil.set(File, col=Col, labels=Name, 
-                     plot.opts=list(plot.observed=FALSE, 
-                                    ylim = c(0, 1.05),
-                                    legend.opts = FALSE)) #grafica as curvas
-
-Nonpareil.legend(nps, x.intersp=0.5, y.intersp=0.7, pt.cex=0.5, cex=0.5) #coloca e personaliza a legenda
-
-detach(Samples);
-summary(nps) #mostra o resumo em forma de tabela
-```
+Use o
+[script13.R](https://github.com/khidalgo85/CURSO_SENAI/blob/master/docs/00.Scripts/script13.R)
+de R para construir as curvas
 
 Vai obter um gráfico com as curvas de saturação de cada amostra, como
 este:
@@ -1984,37 +1963,9 @@ Por último, calcule as distâncias entre cada par de metagenomas usando
 Descarregue o *output* (`04.MinHash/distancesOutputFinal.tsv`) e use o
 seguinte script do R para plotar um heatmap com as distâncias.
 
-Use o seguinte script de R para plotar o *heatmap* com as distâncias.
-
-``` r
-setwd("~/04.MinHash/")
-
-# install.packages('dplyr')
-library(dplyr)
-# install.packages('stringr')
-library(stringr)
-# install.packages('tidyverse')
-library(tidyverse)
-
-data <- read.table("distancesOutputFinal.tsv", comment.char = '', 
-                    header = TRUE ) %>% 
-  rename(X = X.query) 
-  
-
-data$X <- str_remove_all(data$X, "04.MinHash/")
-data$X <- str_remove_all(data$X, ".fq")
-
-names <- c("X", data[,1])
-
-colnames(data) <- names
-
-data <- column_to_rownames(data, var="X")
-
-library(pheatmap)
-
-
-pheatmap(data)
-```
+Use o
+[script14.R](https://github.com/khidalgo85/CURSO_SENAI/blob/master/docs/00.Scripts/script14.R)
+para plotar o *heatmap* com as distâncias.
 
 Vai obter um heatmap com clusterização:
 
@@ -3439,62 +3390,6 @@ Para rodar a análise de qualidade pelo *CheckM* use o seguinte comando:
 
     checkm lineage_wf 05.MAGs/ 06.CheckM/ -t 8 -x fa --tmpdir tmp --tab > 06.CheckM/output.txt
 
-A continuação um gráfico mostrando a disperssão dos MAGs segundo a
-qualidade (baseado no
-[MiMAG](https://www.nature.com/articles/nbt.3893)), sendo possível
-observar quantos MAGs são de baixa (*Low-Quality*: *Completeness \< 50 &
-Contamination \> 10*), média (*Medium-Quality*: *Completeness \> 50 &
-Contamination \< 10*) e alta (*High-Quality*: *Completeness \> 90 &
-Contamination \< 5*). Para a construção desse gráfico, use o seguinte
-script de R.
-
-``` r
-### Gráfico de dispersão dos bins baseado na completude e contaminação
-
-# Lendo os dados 
-
-tab <- read.delim("output.txt", skip = 33)
-
-library(dplyr)
-
-## Formatando a tabela
-tab1 <- as_tibble(tab) %>% 
-  na.omit() %>% 
-  select(1,12,13) %>% 
-  mutate(Quality = case_when(Contamination < 5 & Completeness > 90 ~ "High-Quality",
-                             Contamination < 10 & Completeness >= 50 ~ "Medium-Quality",
-                             Completeness < 50 ~ "Low-Quality",
-                             Contamination > 10 ~ "Low-Quality"))
-
-## Contando os MAGs por qualidade
-
-tab1 %>% 
-  group_by(Quality) %>% 
-  summarise(
-    n=n()
-  )
-
-
-library(ggplot2)
-
-tab1 %>% 
-ggplot(aes(x=Completeness, y=Contamination, shape=Quality)) + 
-  geom_point(size =1.3) +
-  ggtitle("MAGs Dispersion by CheckM") +
-  theme(plot.title = element_text(face = "bold", colour = "Dark blue")) +
-  theme(axis.title = element_text(face = "bold", colour = "Black")) +
-  scale_shape_manual(values = c(17, 8, 1)) +
-  ylim(50,0) + xlim(0,100) +
-  annotate("text", x = 45, y = 50, label = "High-Quality draft 1 (Comp > 90 & Cont < 5)", size = 2.5, colour= "Dark green") +
-  annotate("text", x = 45, y = 45, label = "Medium-Quality draft 7 (Comp > 50 & Cont < 10)", size = 2.5, colour= "Orange") +
-  annotate("text", x = 45, y = 40, label = "Low-Quality draft 9 (Comp < 50 & Cont > 10)", size = 2.5, colour= "Red" ) + 
-  geom_vline(xintercept=90, linetype="dashed", colour="Dark green") + geom_hline(yintercept=5, linetype="dashed", colour="Dark green") +
-  geom_vline(xintercept=50, linetype="dashed", colour="orange") + geom_hline(yintercept=10, linetype="dashed", colour="Orange")
-```
-
-Observe que foi possível recuperar um genoma de alta qualidade, 3 de
-média qualidade e 4 de baixa qualidade.
-
 ### 7.5 Anotação Taxonômica
 
 A classificação taxonômica é o processo para assignar um nome ao(s)
@@ -3527,51 +3422,8 @@ Para descarregar a base de dados use o seguinte comando:
 #### 7.5.2. Execução
 
 Usando R e o arquivo de saída do CheckM `output.txt` crie uma lista dos
-MAGs com média e alta qualidade. Use o Script do R:
-
-``` r
-
-# Lendo os dados 
-
-tab <- read.delim("output.txt", skip = 33)
-
-library(dplyr)
-
-## Formatando a tabela
-tab1 <- as_tibble(tab) %>% 
-  na.omit() %>% 
-  select(1,12,13) %>% 
-  mutate(Quality = case_when(Contamination < 5 & Completeness > 90 ~ "High-Quality",
-                             Contamination < 10 & Completeness >= 50 ~ "Medium-Quality",
-                             Completeness < 50 ~ "Low-Quality",
-                             Contamination > 10 ~ "Low-Quality"))
-
-## Contando os MAGs por qualidade
-
-tab1 %>% 
-  group_by(Quality) %>% 
-  summarise(
-    n=n()
-  )
-
-### Criando tabela só com os MAGs de alta e média qualidade
-mags.filtered <- tab1 %>% 
-  group_by(Quality) %>% 
-  filter(Quality == "High-Quality" | Quality == "Medium-Quality") %>% 
-  ungroup() %>% 
-  select(Bin.Id) %>% 
-  as.data.frame()
-
-fa <- c(rep(".fa", nrow(mags.filtered))) ## add .fa a cada nome do MAG
-
-
-mags <- mags.filtered[,1] %>% 
-  paste0(., fa) %>% 
-  write(., file="filt.mags.txt") # salva o arquivo com a lista dos Mags que passaram o filtro
-
-
-mags.filtered
-```
+MAGs com média e alta qualidade. Use o
+[script16.R](https://github.com/khidalgo85/CURSO_SENAI/blob/master/docs/00.Scripts/script16.R).
 
 Coloque o arquivo `filt.mags.txt` no diretório
 `curso_senai/metagenomica/12.Binning/`). Este arquivo será usado para
@@ -3689,108 +3541,10 @@ são tabelas com as seguintes colunas:
 
 **TABELA**
 
-Usando o Script de R, construa uma tabela única com as informações das
-taxonomias e da qualidade dos MAGs:
-
-``` r
-## Construindo tabela com taxonomia e qualidade dos mags
-
-## install.packages('dplyr')
-library(dplyr)
-
-## install.packages('tidyr')
-library(tidyr)
-
-
-## Lendo a tabela saída do CheckM com a qualidade dos MAGs
-quality <- read.delim("output.txt", skip = 33) %>% 
-  select(Bin.Id, Completeness, Contamination) %>% 
-  na.omit() %>% 
-  as_tibble() %>% 
-  rename(Genome = Bin.Id)
-
-## Lendo a tabela de anotação taxonômica de bactérias
-bact.taxa <- read.delim("gtdbtk.bac120.summary.tsv",
-                        sep = '\t') %>% 
-  select(user_genome, classification, classification_method, note) %>% 
-  rename(Bin.Id = user_genome) %>% 
-  as_tibble() %>% 
-  separate(col = classification, into = c("Kingdom", "Phylum", "Class", "Order",
-                                          "Family", "Genus", "Species"), sep = ';')
-
-
-
-## Lendo a tabela de anotação taxonômica de Arqueas
-arc.taxa <- read.delim("gtdbtk.ar122.summary.tsv",
-                       sep = '\t') %>% 
-  select(user_genome, classification, classification_method, note) %>% 
-  rename(Bin.Id = user_genome) %>% 
-  as_tibble() %>% 
-  separate(col = classification, into = c("Kingdom", "Phylum", "Class", "Order",
-                                          "Family", "Genus", "Species"), sep = ';')
-
-
-## Unindo as tabelas de taxonomia
-taxa <- rbind(bact.taxa,  arc.taxa) %>%
-  rename(Genome = Bin.Id) 
-
-### Limpando a taxonomia
-temp <- select(taxa, 2:8)
-
-# Eliminando caracteres indesejados na taxonomia 
-temp$Kingdom<-gsub("d__","",as.character(temp$Kingdom))
-temp$Phylum<-gsub("p__","",as.character(temp$Phylum))
-temp$Class<-gsub("c__","",as.character(temp$Class))
-temp$Order<-gsub("o__","",as.character(temp$Order))
-temp$Family<-gsub("f__","",as.character(temp$Family))
-temp$Genus<-gsub("g__","",as.character(temp$Genus))
-temp$Species<-gsub("s__","",as.character(temp$Species))
-
-
-### Completando os campos sem taxonomia com o último nível assignado
-temp[is.na(temp)] <- ""
-
-for (i in 1:nrow(temp)){
-  if (temp[i,2] == ""){
-    Kingdom <- paste("Kingdom_", temp[i,1], sep = "")
-    temp[i, 2:7] <- Kingdom
-  } else if (temp[i,3] == ""){
-    phylum <- paste("Phylum_", temp[i,2], sep = "")
-    temp[i, 3:7] <- phylum
-  } else if (temp[i,4] == ""){
-    Class <- paste("Class_", temp[i,3], sep = "")
-    temp[i, 4:7] <- Class
-  } else if (temp[i,5] == ""){
-    Order <- paste("Order_", temp[i,4], sep = "")
-    temp[i, 5:7] <- Order
-  } else if (temp[i,6] == ""){
-    Family <- paste("Family_", temp[i,5], sep = "")
-    temp[i, 6:7] <- Family
-  } else if (temp[i,7] == ""){
-    temp$Species[i] <- paste("Genus",temp$Genus[i], sep = "_")
-  }
-}
-
-taxa$Kingdom <- temp$Kingdom
-taxa$Phylum <- temp$Phylum
-taxa$Class <- temp$Class
-taxa$Order <- temp$Order
-taxa$Family <- temp$Family
-taxa$Genus <- temp$Genus
-taxa$Species <- temp$Species
-
-
-
-## Unindo a taxonomia com a qualidade
-taxa <- merge(quality, taxa, by = "Genome") 
-
-
-
-# Classificando os MAGs pela qualidade
-taxa2 <- taxa %>% 
-  mutate(Quality = if_else(Completeness > 90 & Contamination < 5, "HighQuality",
-                           "MediumQuality"))
-```
+Usando o
+[script17.R](https://github.com/khidalgo85/CURSO_SENAI/blob/master/docs/00.Scripts/script17.R),
+construa uma tabela única com as informações das taxonomias e da
+qualidade dos MAGs.
 
 ### 7.6. Anotação Funcional
 
@@ -4066,46 +3820,10 @@ Por último concatene todas as tabelas de anotação dos MAGs em uma só:
 
     cat * > ../10.TabelaFinal/anotacaoFuncional_mags.txt
 
-Descarregue [aqui](https://figshare.com/ndownloader/files/33953774) da
-tabela `kegg.tsv` que contém todas os níveis jerárquicos e faça upload
-dela junto com `anotacaoFuncional_mags.txt` no ambiente R. A continuação
-encontra um Script do R para trabalhar com as duas tabelas anteriores.
-
-``` r
-
-library(dplyr)
-library(stringr)
-library(tidyr)
-
-
-### Lendo a tabela única de anotação funcional
-func <- read.delim("FunctionalAnnotation/funcannot.txt", header = F) %>% 
-  select(V1,V2,V3,V5,V17) 
-
-### Filtrando só as anotações de KEGG
-func.annot.kegg <- func %>% 
-  filter(str_detect(V5, "^K")) %>% # Filtra strings que começem com K (i.e. K00001)
-  # Renomea as colunas
-  rename(Genome = V1, ContigID = V2, length = V3, KO = V5, pident = V17) %>% 
-  # converte para data.frame
-  as.data.frame()
-
-
-# Lê a tabela das informações completas do KEGG
-kegg <- read.delim("FunctionalAnnotation/kegg.tsv", header = F) %>% 
-  rename(KO = V1, Level1 = V2, Level2 = V3, Level3 = V4, GenName = V5)
-
-## Junta as tabelas da anotação do Kegg e as informações dos níveis do KEGG
-func.annot.kegg.final <- left_join(func.annot.kegg %>% 
-                                     group_by(KO) %>% 
-                                     mutate(id = row_number()),
-                                   kegg %>% 
-                                     group_by(KO) %>% 
-                                     mutate(id = row_number()), 
-                                   by = c("KO", "id"))
-
-head(func.annot.kegg.final)
-```
+No diretório
+[\~/00.Scripts/](https://github.com/khidalgo85/CURSO_SENAI/tree/master/docs/00.Scripts)
+desde repositório encontrará vários scripts de R para a construção de
+gráficos, tabelas e análises com dados gerados neste *pipeline*.
 
 ------------------------------------------------------------------------
 
