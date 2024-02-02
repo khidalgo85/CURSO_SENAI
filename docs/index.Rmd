@@ -2552,7 +2552,7 @@ class: center, middle, inverse
   * Anotación Funcional e Taxonómica
 
 
-[Prática]()
+[Prática](https://github.com/khidalgo85/CURSO_SENAI?tab=readme-ov-file#pr%C3%A1tica-i-linha-de-comando)
 
 ---
 
@@ -2562,7 +2562,7 @@ class: center, middle, inverse
 knitr::include_graphics("03.Images/workflow_metagenomica_cli.png")
 ```
 
-[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-iv)
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI?tab=readme-ov-file#metagen%C3%B4mica-com-a-plataforma-online-kbase)
 
 ---
 class: center, middle, inverse
@@ -2572,5 +2572,455 @@ class: center, middle, inverse
 ![](https://media.giphy.com/media/KfwyWfTwMu1FG0XhO8/giphy.gif)
 ]
 
-[**Prática**](https://github.com/khidalgo85/CURSO_SENAI/tree/master#pr%C3%A1tica-iv)
+[**Prática**](https://github.com/khidalgo85/CURSO_SENAI?tab=readme-ov-file#metagen%C3%B4mica-com-a-plataforma-online-kbase)
+
+---
+class: center, middle, inverse
+
+# Introdução à Linguagem R
+
+---
+
+## O programa R
+
+* O R é uma linguagem orientada a objetos criada em 1996 por **Ross Ilhaka** e **Robert Gentleman** do departamento de estatística da Universidade de Auckland na Nova Zelândia, como alternativa a o software S-Plus que era pago.
+
+* O programa R é de livre distribuição, foi inspirado no mesmo ambiente do S e permite a manipulação de dados, realização de cálculos e geração de gráficos.
+
+* Seu uso tem aumentado nos últimos anos e usuários
+de todo o mundo têm contribuído com o desenvolvimento
+de novos recursos para o R.
+
+---
+## Instalando o R
+
+* Entrar no site https://www.r-project.org/ 
+
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
+knitr::include_graphics("03.Images/R.png")
+```
+
+---
+## Instalando o R
+
+* Clicar no menu CRAN (a esquerda)
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/R2.png")
+```
+
+
+---
+## Instalando o R
+
+* Escolher qualquer *mirror* do Brasil
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/R3.png")
+```
+
+---
+## Instalando o R
+
+* Clicar em [Download R for Windows](https://vps.fmvz.usp.br/CRAN/bin/windows/)
+
+* Clicar em [install R for the first time](https://vps.fmvz.usp.br/CRAN/bin/windows/base/)
+
+---
+## Instalando o R
+
+* Clicar em [Download R-4.3.2 for Windows](https://vps.fmvz.usp.br/CRAN/bin/windows/base/R-4.3.2-win.exe). Comenzará la descarga del arquivo `.exe`
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/R4.png")
+```
+
+---
+## Instalando o R
+
+* Siga as instruções do instalador.
+
+---
+## RStudio (Posit)
+
+O IDE (*Integrated Development Environment*) RStudio é um conjunto de ferramentas para ajudá-lo a ser mais produtivo com R e Python. Adicionalmente, inclui um console e um editor de código que apoia a execução do código.
+
+---
+## RStudio (Posit)
+
+* 1 **Editor de código:** Escrever e editar códigos e scripts.
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
+knitr::include_graphics("03.Images/R5.png")
+```
+
+---
+## RStudio (Posit)
+
+* 2 **Environment e History:** Aqui ficarão visíveis todos os objetos que forem criados na sessão do R.
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
+knitr::include_graphics("03.Images/R5.png")
+```
+
+---
+## RStudio (Posit)
+
+* 3 **Console:** É aqui que o R mostrará os códigos executados e resultados da maioria dos comandos.
+
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
+knitr::include_graphics("03.Images/R5.png")
+```
+
+---
+## RStudio (Posit)
+
+* 4 **Files, Plots, Packages, Help, Viewer:** Nesta janela se encontram várias funcionalidades do RStudio, como visualizador de gráficos, o sistema de arquivos e diretórios e acesso ao menú de ajuda das funções e pacotes do R.
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
+knitr::include_graphics("03.Images/R5.png")
+```
+
+---
+## Instalando o RStudio 
+
+* Entre no site https://posit.co/download/rstudio-desktop/
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "80%"}
+knitr::include_graphics("03.Images/R6.png")
+```
+
+---
+## Instalando o RStudio
+
+* Clicar em [DOWNLOAD RSTUDIO DESKTOP FOR WINDOWS]() (O site já mostrará o sistema operativo e a versão)
+
+* Siga as instruções do instalador
+
+---
+class: center, middle, inverse
+
+# Mãos na massa
+.center[
+![](https://media.giphy.com/media/KfwyWfTwMu1FG0XhO8/giphy.gif)
+]
+
+[**Prática**]()
+
+---
+## Script 1 - Noções básicas
+
+Primer encontro com R no RStudio
+
+**script1.R**
+
+---
+## Tipos de dados
+
+* Númericos `"numeric"`
+  * Inteiros 
+  * Double
+
+* Carácter/String ou texto (Alfanúmerico)
+  * Sempre entre aspas simples ou duplas
+  
+* Lógicos
+  * TRUE
+  * FALSE
+
+Existem funções para descobrir a classe de dado de uma determinada variável e outras para converter entre as diferentes classes.
+
+---
+
+## Script 2 - Tipos e conversão de dados
+
+* Tipos de dados
+
+* Funções
+
+  * `class()` 
+  * `typeof()`
+  * `as.character()`
+  * `as.integer()`
+  * `as.logical()`
+
+**script2.R**
+
+---
+## Nomeação de variáveis
+
+Pode-se usar letras, números e underline.
+
+* Regras
+
+	- Não  pode começar por número
+	- Pode começar por ponto seguido de letra ou letra
+	- Não pode começar por ponto seguido de números
+
+* Operadores de atribuição (nomeação de variáveis)
+
+	- `nome <- x`
+	- `x -> nome`
+	- `nome = x`
+	- `função assign('nome', x)`
+	
+---
+## Nomeação de variáveis
+
+**Palavras reservadas**
+
+São palavras já usadas pelo R para funções ou comandos que **não devem ser usadas** para nomear as variáveis.
+
+	- if
+	- else
+	- repeat
+	- while
+	- function
+	- for
+	- in
+	- next
+	- break
+	- TRUE
+	- FALSE
+	- NULL
+	- Inf
+	- NaN
+	- NA
+	- NA_integer_
+	- NA_real_
+	- NA_complex_
+	- NA_character
+	- ...
+
+
+
+---
+## Comentando scripts
+
+É possível comentar o código, deixando comentários. Para indicar pro R que é um comentário e não seja interpretado como código, deve começar com #.
+
+---
+## Script 3 - Nomeação de Variáveis
+
+* Regras de nomeação
+
+* Remover variáveis
+
+**script3.R**
+
+---
+## Operações e funções matemáticas
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/R7.png")
+```
+
+---
+## Operadores relacionais
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/R8.png")
+```
+
+O resultado das comparações é um resultado lógico **TRUE** ou **FALSE**
+
+---
+## Operadores lógicos
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/R9.png")
+```
+
+
+---
+## Script 4 - Operadores
+
+* Operadores matemáticos
+
+* Operadores relacionais
+
+* Operadores lógicos
+
+**script4.R**
+
+---
+## Estrutura de dados
+
+**Vetores**
+
+Vetores no R são apenas conjuntos indexados de valores do mesmo tipo. Para criá-los, existem várias formas, sendo a função `c()` a mais usada.
+
+**script5.R**
+
+**Listas**
+
+As listas são bem parecidas com vetores, mas com uma diferença essencial: você pode misturar diferentes classes de objetos dentro dela!.
+
+**script6.R**
+
+---
+
+## Estrutura de dados
+
+**Data Frames**
+Os data frames são super importantes no R, pois são objetos que guardam os nossos dados, em forma de tabela. São equivalentes a uma plahilha de Excel. 
+
+A principal característica dos data frame é possuir linhas e colunas. É padrão que nas colunas temos variáveis e nas linhas observações.
+
+**script7.R**
+
+* Existem outros tipos de estrutura de dados, arrays e matrizes, que não abordaremos neste curso.
+
+---
+## Funções
+
+Já usamos algumas funções básicos dentro do R, tais como `c()`, `class()`, `length()`, `dim()`.
+
+A diferença dos objetos (p.e. vetores, data frames) as funções recebem argumentos, os quais são valores que colocamos dentro dos parênteses e que as funções precisam para serem executadas. 
+
+Por exemplo, a função `c()` precisa saber quais são os valores que ele ira concatenar em um vetor.
+
+Os argumentos de uma função são sempre separados por vírgulas. 
+
+**script8.R**
+
+---
+## Controles de fluxo
+
+Toda boa linguagem de programação possui estruturas de `if`, `else`, `for` e `while`. São estruturas de controle de fluxo que permitem automatizar e manipular de maneira eficiente as ações do programa.
+
+**Condicionamento: `if` e `else`**
+
+Servem para executar códigos apenas se uma condição for satisfeita (testes lógicos)
+
+**Iteradores: `for` e `while`**
+
+`for` é usado para fazer loopings de programação, isto é, repetir uma mesma tarefa para um conjunto de valores diferentes. Cada repetição é chamada de iteração e o objeto que muda de valor em cada iteração é chamado de iterador.
+
+`while` também é um iterador. Porém o looping será interrumpido quando a condição não for satisfeita
+
+**script9.R**
+
+---
+## Pacotes
+
+Um pacote é um conjunto de funções que têm como objetivo resolver um problema específico. 
+
+O mais interessante é que qualquer pessoa pode fazer um novo pacote e disponibilizar para a comunidade, acelerando o desenvolvimento da ferramenta. É quase impossível fazer uma análise apenas com as funções básicas do R e dificilmente não vai existir um pacote só com as funções que você precisa.
+
+Por tanto terá que instalar vários pacotes. Atualmente no CRAN (*The Comprehensive R Archive Network*) existem mais de 20300 pacotes disponíveis. Com certeza essa é o principal motivo do sucesso do R. 
+
+Além do CRAN, os desenvolvedores também podem disponibilizar pacotes no GitHub
+
+**script10.R**
+
+---
+## Super mini introdução ao mundo Tidyverse
+
+O `tidyverse` é uma coleção de pacotes ou também chamado pacote "guarda-chuva" que compartilham uma mesma filosofia, gramática e estrutura de dados. Assim, se você aprende um pacote deles, será mais fácil aprender os seguintes.
+
+Cada um dos diferentes pacotes que fazem parte de `tidyverse` está focado em uma tarefa específica (p.e. importação, transformação, formatação, visualização, etc.), porém, todos eles compartilham uma mesma 'base', de forma que, juntos se complementan. 
+
+---
+## Super mini introdução ao mundo Tidyverse
+
+A filosofia por tras do `tidyverse` é primeiro, tornar a análise de dados no R mais rápida e prática, e segundo, está intrinsicamente ligada ao fluxo da ciência de dados ou também chamado Ciclo da Ciência de Dados
+
+```{r, echo=FALSE, fig.align = 'center', out.width = "100%"}
+knitr::include_graphics("03.Images/R10.png")
+```
+
+Então o `tidyverse` contem uma série de pacotes que fazem parte do ciclo da ciência de dados. Algum dos mais famosos são: `ggpplot2`, `dplyr`, `tidyr` `purrr`, `readr`, entre outros. 
+
+**script11.R**
+
+---
+## Primeiro passo: Importação de dados
+
+Até que enfim chegou o momento de trabalhar com os nossos próprios dados. Para isto então é essencial importar eles para dentro do ambiente R. 
+
+Iremos trabalhar com as seguintes bases de dados/ planilhas obtidas nos workflows vistos neste curso:
+
+1 **genoma_kegg.csv**
+Anotação funcional do genoma de *Leclercia adecarboxylata* trabalhado no módulo genômica
+
+---
+## Primeiro passo: Importação de dados
+
+2 **Samples.txt** e **arquivos.npo**
+O primeiro é uma tabela formatada para a análise das curvas de cobertura dos metagenomas. Os arquivos.npo, são as saídas de cada amostra do programa NonPareil que calcula a cobertura dos metagenomas
+
+3 **distancesOutputFinal.tsv**
+Arquivo de saída do programa MinHash que calcula a distancia entre os metagenomas.
+
+4 **tabela_total_final.tsv**
+Tabela final das anotações funcionais dos metagenomas
+
+5 **output.txt**
+Arquivo de saída do *CheckM* que avalia a qualidade dos genomas recuperados apartir de metagenomas
+
+6 **gtdbtk.bac120.summary.tsv** e **gtdbtk.ar53.summary.tsv**
+Tabela com a anotação taxonômica dos genomas recuperados apartir de metagenomas (MAGs)
+
+7 **anotacaoFuncional_mags.txt**
+Tabela final com as anotações funcionais dos MAGs
+
+---
+## Primeira etapa: Importação de dados
+
+**Pacote** `readr()`
+
+Este pacote é usado para importar arquivos de texto, `.txt` ou `.csv` dentro do ambiente R. 
+
+Ele automaticamente transforma os arquivos de texto em `tibbles` (data frames mais modernos) usando funções como:
+
+* `read_csv()`: arquivos separados por vírgulas ou ponto e virgula (`read_csv2()`)
+* `read_tsv()`: para arquivos separados por tabulação
+* `read_delim()`: para arquivos separados porum delimitador genérico. No argumento `delim=` pode ser indicado qual é o separador
+* `read_table()`: para tabelas com colunas separados por espaços
+
+Para planilhas de Excel (`.xlsx` ou `.xls`) o `readr()` não tem uma função que consiga ler este tipo de arquivos. O pacote `readxl()` tem a função `read_excel()`. Esta biblioteca **não** faz parte do tidyverse, por tanto tem que ser instalada por separado, com a função `install.packages()`
+
+**script12.R (12.2)**
+
+---
+## Segunda etapa: Arrumar/ Formatar
+
+É a etapa mais importante, muitas vezes toma a maior parte do tempo de uma análise de dados.
+
+Geralmente o que recebemos é uma base de dados "crua" que deve ser transformada a uma base de dados "analítica", que esteja pronta para gerar tabelas, e gráficos ou alimentar modelos.
+
+O desenvolvedores do tidyverse, inseriram o conceito de *data tidying* (arrumação de dados) na ciência de dados. Se considera que uma base é *tidy* se:
+
+* As linhas representam observações
+* As colunas representam variáveis
+
+Então esta etapa consiste em colocar a nossa base de dados no formato tidy, os principais pacotes para esta atividade são: `dplyr` e `tidyr`.
+
+**script12.R (12.3)**
+
+---
+## Terceira etapa: Visualização
+
+Agora que temos nossos dados prontos, é hora de passar para a visualização desses dados. É uma etapa bem importante para a interpretação dos dados e é o principal combustível para a etapa de comunicação e publicação das análises. 
+
+Quando se fala de visualização não somente se trata de gráficos, também podem estar incluidas uma simples medida de resumo (frequência, média, variâncias, min, max, etc), algumas dessas medidas organizadas numa tabela.
+
+---
+## Terceira etapa: Visualização 
+
+O pacote `ggplot2` revolucionou a construção de gráficos no R. Foi o trabalho de tese de doutorado de Hadley Wickham. Ele se inspirou no livro de Leland Wilskinson "A gramática dos gráficos" (*The Grammar of graphics*), onde se abordam principios fundamentais para a construção de gráficos estatísticos. Esse autor definiu os gráficos como o mapeamento dos dados em atributos estéticos (posição, cor, forma, tamanho) de formas geométricas (pontos, linhas, barras, caixas). O Hadley escreveu um livro chamado "Uma gramática em camada dos gráficos" (*A layered Grammar of Graphics*), onde ele adicionou aos conceitos do Wilskinson, que os elementos que fazem parte de um gráfico (dados,sistema de coordenadas, rótulos, anotações, etc.) são **camadas**, e que a construção dos gráficos se dá pela sobreposição dessas camadasç
+
+**script12.R (12.4)**
+
+
+
+
+
+
+
+
+
 
